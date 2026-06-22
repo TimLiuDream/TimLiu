@@ -1,0 +1,77 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+  --background: 0 0% 100%;
+  --foreground: 215 25% 12%;
+  --card: 210 20% 98%;
+  --muted: 210 16% 96%;
+  --border: 214 15% 86%;
+  --primary: 214 100% 42%;
+}
+
+:root.dark {
+  color-scheme: dark;
+  --background: 215 28% 9%;
+  --foreground: 210 17% 82%;
+  --card: 215 25% 12%;
+  --muted: 215 20% 16%;
+  --border: 215 16% 22%;
+  --primary: 212 100% 64%;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes cursorBlink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.35;
+  }
+}
+
+.animate-fade-up {
+  animation: fadeUp 240ms ease-out;
+}
+
+.animate-cursor-blink {
+  animation: cursorBlink 1.2s steps(1, end) infinite;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: hsl(var(--background));
+  color: hsl(var(--foreground));
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  transition: background-color 200ms ease, color 200ms ease;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+::selection {
+  background: rgba(9, 105, 218, 0.14);
+}
