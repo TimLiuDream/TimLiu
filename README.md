@@ -37,12 +37,16 @@ public/
   avatar.svg
   og-image.svg
 
+pic/
+  XcQvSMdB_400x400.jpg
+
 doc/
   personal-homepage-prd.md
   design-spec-github-geek.md
   personal-impression.md
   local-run.md
   deployment.md
+  dev-notes.md
   task_plan.md
   findings.md
   progress.md
@@ -72,6 +76,11 @@ npm run dev
 - Dark mode is applied by toggling the `dark` class on `<html>`.
 - OpenGraph metadata uses `public/og-image.svg`.
 - The site is intentionally small and easy to extend later.
+
+## Projects
+
+- **ContentPolish** — 内容打磨工具
+  部署地址：https://content-polish.vercel.app/
 
 ## Next Ideas
 

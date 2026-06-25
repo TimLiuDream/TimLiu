@@ -12,6 +12,19 @@ export function AboutSection() {
             &gt; still tinkering...
             <span className="animate-cursor-blink">_</span>
           </div>
+          <div className="mt-4 flex flex-wrap items-center gap-2 font-mono text-sm">
+            <span className="text-foreground/50">project:</span>
+            <a
+              href="https://content-polish.vercel.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-md border border-border bg-card px-2.5 py-0.5 text-foreground/80 transition-colors hover:bg-accent hover:text-accent-foreground"
+            >
+              ContentPolish
+              <span className="ml-1 text-foreground/40">↗</span>
+            </a>
+            <span className="text-foreground/50">// 内容打磨工具</span>
+          </div>
         </div>
       </div>
     </section>
