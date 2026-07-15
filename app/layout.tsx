@@ -26,6 +26,22 @@ export default function RootLayout({
       <body>
         {children}
         <Analytics />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'Person',
+              name: 'TimLiu',
+              url: 'https://timliu.vercel.app',
+              sameAs: [
+                'https://github.com/TimLiuDream',
+                'https://t.me/dreamtimliu',
+                'https://x.com/timliu92',
+              ],
+            }),
+          }}
+        />
       </body>
     </html>
   );
