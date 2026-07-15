@@ -3,6 +3,7 @@ import { ContactSection } from '@/components/contact-section';
 import { Footer } from '@/components/footer';
 import { Hero } from '@/components/hero';
 import { Navbar } from '@/components/navbar';
+import { ProjectsSection } from '@/components/projects-section';
 import { ThemeToggle } from '@/components/theme-toggle';
 
 export default function Home() {
@@ -15,6 +16,7 @@ export default function Home() {
         </div>
         <Hero />
         <AboutSection />
+        <ProjectsSection />
         <ContactSection />
         <Footer />
       </section>

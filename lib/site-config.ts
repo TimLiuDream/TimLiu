@@ -16,4 +16,21 @@ export const siteConfig = {
     { label: 'Mode', value: 'Minimal & maintainable' },
     { label: 'Easter egg', value: 'Small, hidden, fun' },
   ],
+  projects: [
+    {
+      name: 'ContentPolish',
+      description: '内容打磨工具',
+      href: 'https://content-polish.vercel.app/',
+    },
+    {
+      name: 'chatgpt-plus',
+      description: 'AI 助手全套开源解决方案',
+      href: 'https://github.com/TimLiuDream/chatgpt-plus',
+    },
+    {
+      name: 'bilibili-live-helper',
+      description: '直播辅助工具',
+      href: 'https://github.com/TimLiuDream/bilibili-live-helper',
+    },
+  ],
 } as const;
