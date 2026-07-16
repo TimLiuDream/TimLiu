@@ -1,10 +1,10 @@
 export const siteConfig = {
   name: 'TimLiu',
-  tagline: '一个喜欢折腾、认真做事的人。',
+  tagline: 'Web3 测试 / Go 开发 / 折腾 Side Project',
   description:
     '我更关注事情能不能落地、能不能长期维护、能不能越做越顺。',
   about:
-    '我是 Tim，平时喜欢折腾工具、项目和一些新想法。这个网站会慢慢记录我的一些想法、项目和日常输出。',
+    '我是 Tim，平时在 Web3 项目做测试，业余写 Go、折腾工具和 Side Project。这个网站会慢慢记录我的一些想法、项目和日常输出。',
   contacts: [
     { label: 'Telegram', value: '@dreamtimliu', href: 'https://t.me/dreamtimliu', primary: true },
     { label: 'GitHub', value: 'TimLiuDream', href: 'https://github.com/TimLiuDream' },
