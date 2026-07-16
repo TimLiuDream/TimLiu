@@ -61,7 +61,7 @@ export function Hero() {
             </button>
             <div>
               <div className="text-sm font-medium">{siteConfig.name}</div>
-              <div className="text-sm text-foreground/60">Web3 测试 / Go 开发 / Side Project</div>
+              <div className="text-sm text-foreground/60">Web3 撸空投 / Golang / Side Project</div>
             </div>
           </div>
 
