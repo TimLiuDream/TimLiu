@@ -45,8 +45,9 @@
 
 ## C 级 — 长远基石（可后续慢慢处理）
 
-- [x] **引入 `next/font` 优化字体加载**
-  - 使用 `next/font/google` 加载 Inter，`globals.css` 的系统字体栈作为后备。
+- [x] ~~**引入 `next/font` 优化字体加载**~~ → **已回滚，改用系统字体栈**
+  - `next/font/google` 需要在构建时访问 Google Fonts API，本地开发环境受限。
+  - `globals.css` 已有 `font-family: Inter, system-ui, ...` 后备栈，效果一致且无外部依赖。
 
 - [x] **添加 `loading.tsx` / `error.tsx` / `not-found.tsx`**
   - 匹配页面风格的极简加载、错误和 404 页面。
@@ -68,7 +69,11 @@
 
 - [x] **添加 Now 页 / 动态，提供回访理由**
   - `/now` 页面已创建，footer 有 `/now` 入口，sitemap 已添加。
-- [ ] 支持多语言（中/英）切换
-- [ ] 添加 RSS 博客输出
+- [x] **支持多语言（中/英）切换**
+  - 基于 React Context + localStorage 的轻量 i18n 系统。
+  - 新增文件：`lib/i18n.ts`、`components/lang-provider.tsx`、`components/lang-toggle.tsx`。
+  - 所有页面组件已接入翻译，导航栏有中/英切换按钮。
+- [x] **添加 RSS 博客输出**
+  - `app/feed.xml/route.ts` 生成 RSS 2.0 feed，footer 有入口。
 - [x] **清理 `doc/` 中的 AI 策划中间产物（task_plan.md / findings.md / progress.md）**
   - 已删除并提交。
