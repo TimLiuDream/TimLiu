@@ -1,5 +1,4 @@
 import { siteConfig } from '@/lib/site-config';
-import { SiteMark } from './site-mark';
 
 export function Navbar() {
   return (

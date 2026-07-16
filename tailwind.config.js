@@ -15,6 +15,8 @@ module.exports = {
         primary: 'hsl(var(--primary))',
         card: 'hsl(var(--card))',
         muted: 'hsl(var(--muted))',
+        accent: 'hsl(var(--accent))',
+        'accent-foreground': 'hsl(var(--accent-foreground))',
       },
       borderRadius: {
         xl: '0.75rem',

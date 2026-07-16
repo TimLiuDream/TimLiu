@@ -10,6 +10,8 @@
   --muted: 210 16% 96%;
   --border: 214 15% 86%;
   --primary: 214 100% 42%;
+  --accent: 210 20% 96%;
+  --accent-foreground: 215 25% 12%;
 }
 
 :root.dark {
@@ -20,6 +22,8 @@
   --muted: 215 20% 16%;
   --border: 215 16% 22%;
   --primary: 212 100% 64%;
+  --accent: 215 20% 16%;
+  --accent-foreground: 210 17% 82%;
 }
 
 @keyframes fadeUp {

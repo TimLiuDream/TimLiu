@@ -72,7 +72,7 @@ export function Hero() {
             <div className="text-foreground/60">Minimal, useful, maintainable.</div>
           </div>
 
-          <div className="grid gap-3 sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3">
+          <div className="grid gap-3 sm:grid-cols-3">
             {siteConfig.stats.map((stat) => (
               <div key={stat.label} className="rounded-xl border border-border bg-background px-4 py-3">
                 <div className="text-[10px] uppercase tracking-[0.2em] text-foreground/40">{stat.label}</div>
@@ -88,6 +88,14 @@ export function Hero() {
               </span>
             ))}
           </div>
+
+          <a
+            href="#projects"
+            className="group flex items-center gap-1.5 text-xs text-foreground/40 transition-colors duration-200 hover:text-foreground/70"
+          >
+            <span className="font-mono">See projects</span>
+            <span className="transition-transform duration-200 group-hover:translate-x-0.5">→</span>
+          </a>
         </div>
       </aside>
     </div>

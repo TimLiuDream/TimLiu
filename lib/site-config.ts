@@ -6,7 +6,7 @@ export const siteConfig = {
   about:
     '我是 Tim，平时喜欢折腾工具、项目和一些新想法。这个网站会慢慢记录我的一些想法、项目和日常输出。',
   contacts: [
-    { label: 'Telegram', value: '@dreamtimliu', href: 'https://t.me/dreamtimliu' },
+    { label: 'Telegram', value: '@dreamtimliu', href: 'https://t.me/dreamtimliu', primary: true },
     { label: 'GitHub', value: 'TimLiuDream', href: 'https://github.com/TimLiuDream' },
     { label: 'Twitter', value: '@timliu92', href: 'https://x.com/timliu92' },
   ],
@@ -24,3 +24,6 @@ export const siteConfig = {
     },
   ],
 } as const;
+
+export type SiteConfig = typeof siteConfig;
+export type Contact = (typeof siteConfig.contacts)[number];
