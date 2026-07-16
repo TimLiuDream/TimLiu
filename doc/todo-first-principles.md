@@ -66,7 +66,9 @@
 
 ## D 级 — 长期方向（先记录，暂不执行）
 
-- [ ] 添加 Now 页 / 动态，提供回访理由
+- [x] **添加 Now 页 / 动态，提供回访理由**
+  - `/now` 页面已创建，footer 有 `/now` 入口，sitemap 已添加。
 - [ ] 支持多语言（中/英）切换
 - [ ] 添加 RSS 博客输出
-- [ ] 清理 `doc/` 中的 AI 策划中间产物（task_plan.md / findings.md / progress.md）
+- [x] **清理 `doc/` 中的 AI 策划中间产物（task_plan.md / findings.md / progress.md）**
+  - 已删除并提交。

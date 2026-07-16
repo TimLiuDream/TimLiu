@@ -1,5 +1,9 @@
+'use client';
+
 import { GithubIcon, TelegramIcon, TwitterIcon } from './icons';
 import { siteConfig } from '@/lib/site-config';
+import { useLang } from './lang-provider';
+import { t } from '@/lib/i18n';
 
 const iconMap = {
   Telegram: TelegramIcon,
@@ -8,12 +12,14 @@ const iconMap = {
 } as const;
 
 export function ContactSection() {
+  const { lang } = useLang();
+
   return (
     <section id="contact" className="border-t border-border py-14">
       <div className="grid gap-6 lg:grid-cols-[0.75fr_1.25fr] lg:gap-14">
-        <h2 className="text-2xl font-semibold tracking-tight">联系方式</h2>
+        <h2 className="text-2xl font-semibold tracking-tight">{t(lang, 'contact.title')}</h2>
         <div className="space-y-4 text-foreground/75">
-          <p>如果你想聊合作、项目、想法，欢迎联系我。</p>
+          <p>{t(lang, 'contact.description')}</p>
           <div className="flex flex-wrap items-center gap-3">
             {siteConfig.contacts.map((contact) => {
               const Icon = iconMap[contact.label as keyof typeof iconMap];
@@ -33,7 +39,7 @@ export function ContactSection() {
                   title={contact.label}
                 >
                   <Icon className="h-5 w-5" />
-                  {isPrimary && <span className="text-xs font-medium">Telegram</span>}
+                  {isPrimary && <span className="text-xs font-medium">{t(lang, 'contact.telegram')}</span>}
                 </a>
               );
             })}

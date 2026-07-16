@@ -2,6 +2,8 @@
 
 import { useState } from 'react';
 import { siteConfig } from '@/lib/site-config';
+import { useLang } from './lang-provider';
+import { t } from '@/lib/i18n';
 
 const hiddenLines = [
   'Build. Ship. Refine.',
@@ -11,6 +13,7 @@ const hiddenLines = [
 ];
 
 export function Hero() {
+  const { lang } = useLang();
   const [secretIndex, setSecretIndex] = useState(0);
 
   const cycleSecret = () => {
@@ -22,12 +25,12 @@ export function Hero() {
       <div className="space-y-8 animate-fade-up">
         <div className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1 text-[11px] tracking-[0.12em] text-foreground/65 shadow-soft sm:text-xs">
           <span className="h-2 w-2 rounded-full bg-primary" />
-          GITHUB STYLE • MINIMAL PERSONAL HOMEPAGE
+          {t(lang, 'hero.badge')}
         </div>
 
         <div className="space-y-5">
           <h1 className="max-w-4xl text-4xl font-semibold leading-[1.06] tracking-tight text-foreground sm:text-5xl lg:text-[64px]">
-            你好，我是 {siteConfig.name}
+            {t(lang, 'hero.greeting')} {siteConfig.name}
           </h1>
           <p className="max-w-3xl text-base leading-8 text-foreground/70 sm:text-lg">
             {siteConfig.tagline}
@@ -36,11 +39,11 @@ export function Hero() {
           </p>
         </div>
 
-        <p className="max-w-2xl text-sm leading-7 text-foreground/55">这个站点是我的个人主场，用来介绍我自己，也记录我在做的事。</p>
+        <p className="max-w-2xl text-sm leading-7 text-foreground/55">{t(lang, 'hero.description')}</p>
       </div>
 
       <aside className="relative min-w-0 rounded-2xl border border-border bg-card p-6 shadow-soft transition-transform duration-200 hover:-translate-y-0.5 sm:p-7 lg:p-8">
-        <div className="absolute right-4 top-4 text-xs text-foreground/35">&lt;&gt; geek mode</div>
+        <div className="absolute right-4 top-4 text-xs text-foreground/35">&lt;&gt; {t(lang, 'hero.geekMode')}</div>
         <div className="space-y-6">
           <div className="flex items-center gap-4">
             <button
@@ -61,15 +64,15 @@ export function Hero() {
             </button>
             <div>
               <div className="text-sm font-medium">{siteConfig.name}</div>
-              <div className="text-sm text-foreground/60">Web3 撸空投 / Golang / Side Project</div>
+              <div className="text-sm text-foreground/60">{t(lang, 'hero.subtitle')}</div>
             </div>
           </div>
 
           <div className="space-y-3 rounded-xl border border-border bg-background p-4 font-mono text-sm leading-7 text-foreground/80">
-            <div>&gt; current_focus</div>
+            <div>&gt; {t(lang, 'hero.focus')}</div>
             <div className="text-foreground/60">{hiddenLines[secretIndex]}</div>
-            <div>&gt; favorite_mode</div>
-            <div className="text-foreground/60">Minimal, useful, maintainable.</div>
+            <div>&gt; {t(lang, 'hero.mode')}</div>
+            <div className="text-foreground/60">{t(lang, 'hero.modeValue')}</div>
           </div>
 
           <div className="grid gap-3 sm:grid-cols-3">
@@ -93,7 +96,7 @@ export function Hero() {
             href="#projects"
             className="group flex items-center gap-1.5 text-xs text-foreground/40 transition-colors duration-200 hover:text-foreground/70"
           >
-            <span className="font-mono">See projects</span>
+            <span className="font-mono">{t(lang, 'hero.seeProjects')}</span>
             <span className="transition-transform duration-200 group-hover:translate-x-0.5">→</span>
           </a>
         </div>

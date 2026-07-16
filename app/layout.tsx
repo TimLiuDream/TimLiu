@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Analytics } from '@vercel/analytics/react';
 import { Inter } from 'next/font/google';
+import { LangProvider } from '@/components/lang-provider';
 import './globals.css';
 
 const inter = Inter({ subsets: ['latin'] });
@@ -45,7 +46,7 @@ export default function RootLayout({
             __html: '(function(){try{var t=localStorage.getItem("theme");var d=document.documentElement;if(t==="dark"||(!t&&window.matchMedia("(prefers-color-scheme: dark)").matches)){d.classList.add("dark");d.style.colorScheme="dark"}else{d.style.colorScheme="light"}}catch(e){}})()',
           }}
         />
-        {children}
+        <LangProvider>{children}</LangProvider>
         <Analytics />
         <script
           type="application/ld+json"
