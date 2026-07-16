@@ -15,7 +15,20 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'TimLiu',
     description: 'TimLiu 的极简个人主页',
-    images: ['/og-image.svg'],
+    images: [
+      {
+        url: '/og-image',
+        width: 1200,
+        height: 630,
+        type: 'image/png',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'TimLiu',
+    description: 'TimLiu 的极简个人主页',
+    images: ['/og-image'],
   },
 };
 
