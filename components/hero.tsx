@@ -1,5 +1,6 @@
 "use client";
 
+import Image from 'next/image';
 import { useState } from 'react';
 import { siteConfig } from '@/lib/site-config';
 import { useLang } from './lang-provider';
@@ -61,9 +62,12 @@ export function Hero() {
               aria-label="切换头像彩蛋"
               title="点击切换彩蛋"
             >
-              <img
+              <Image
                 src="/avatar.jpg"
                 alt={siteConfig.name}
+                width={64}
+                height={64}
+                priority
                 className="h-full w-full object-cover transition-opacity duration-200 group-hover:opacity-90"
               />
               <span className="absolute inset-0 flex items-center justify-center bg-background/0 text-[11px] font-mono text-foreground/0 transition-all duration-200 group-hover:bg-background/60 group-hover:text-foreground/80">

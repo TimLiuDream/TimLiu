@@ -112,7 +112,7 @@ export const translations = {
       projectSuffix: ' — a content polishing tool, deployed on Vercel.',
       mindset: 'Ship useful things. Keep it small, keep it sharp.',
       updated: 'Last updated: 2026-07-16',
-      back: '← Home',
+      back: 'Home',
     },
     notFound: {
       title: 'Page not found',
