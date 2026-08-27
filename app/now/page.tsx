@@ -39,7 +39,7 @@ export default function NowPage() {
             <div>
               <div className="font-mono text-sm text-primary">&gt; side_project</div>
               <p className="mt-1 text-base">
-                {t(lang, 'now.project')} <a href="https://content-polish.vercel.app/" target="_blank" rel="noopener noreferrer" className="underline decoration-foreground/20 underline-offset-2 transition-colors hover:decoration-foreground/60">ContentPolish</a> —— 一个内容打磨工具，已部署到 Vercel。
+                {t(lang, 'now.project')} <a href="https://content-polish.vercel.app/" target="_blank" rel="noopener noreferrer" className="underline decoration-foreground/20 underline-offset-2 transition-colors hover:decoration-foreground/60">ContentPolish</a> {t(lang, 'now.projectSuffix')}
               </p>
             </div>
 

@@ -26,10 +26,10 @@ export function ProjectsSection() {
                   {project.name}
                 </span>
                 <span className="hidden text-sm text-foreground/50 sm:inline">
-                  // {project.description}
+                  // {project.description[lang]}
                 </span>
                 <span className="text-sm text-foreground/50 sm:hidden">
-                  // {project.description}
+                  // {project.description[lang]}
                 </span>
                 <span className="ml-auto text-foreground/30 transition-colors group-hover:text-foreground/60">
                   ↗

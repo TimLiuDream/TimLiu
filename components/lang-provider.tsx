@@ -16,6 +16,7 @@ export function LangProvider({ children }: { children: React.ReactNode }) {
     const stored = localStorage.getItem('lang') as Lang | null;
     if (stored === 'en' || stored === 'zh') {
       setLangState(stored);
+      document.documentElement.lang = stored === 'en' ? 'en' : 'zh-CN';
     }
     setMounted(true);
   }, []);
@@ -23,6 +24,7 @@ export function LangProvider({ children }: { children: React.ReactNode }) {
   const setLang = useCallback((next: Lang) => {
     setLangState(next);
     localStorage.setItem('lang', next);
+    document.documentElement.lang = next === 'en' ? 'en' : 'zh-CN';
   }, []);
 
   if (!mounted) {

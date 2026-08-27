@@ -32,6 +32,13 @@ export const translations = {
     },
     langToggle: {
       switchTo: 'English',
+      aria: '切换语言',
+    },
+    themeToggle: {
+      aria: '切换暗色模式',
+      light: '浅色',
+      dark: '深色',
+      theme: '主题',
     },
     now: {
       title: '/now',
@@ -39,6 +46,7 @@ export const translations = {
       web3: '在 Web3 撸空投，关注新公链和跨链交互的测试网机会。',
       golang: '主力语言是 Golang，用它写工具、练算法、做自动化和 Side Project。',
       project: '打磨',
+      projectSuffix: '—— 一个内容打磨工具，已部署到 Vercel。',
       mindset: 'Ship useful things. Keep it small, keep it sharp.',
       updated: '上次更新：2026-07-16',
       back: '回首页',
@@ -87,6 +95,13 @@ export const translations = {
     },
     langToggle: {
       switchTo: '中文',
+      aria: 'Switch language',
+    },
+    themeToggle: {
+      aria: 'Toggle dark mode',
+      light: 'Light',
+      dark: 'Dark',
+      theme: 'Theme',
     },
     now: {
       title: '/now',
@@ -94,6 +109,7 @@ export const translations = {
       web3: 'Exploring Web3 airdrops, focusing on testnet opportunities for new L1s and cross-chain protocols.',
       golang: 'Golang is my primary language. I use it for tools, algorithms, automation, and side projects.',
       project: 'Polishing',
+      projectSuffix: ' — a content polishing tool, deployed on Vercel.',
       mindset: 'Ship useful things. Keep it small, keep it sharp.',
       updated: 'Last updated: 2026-07-16',
       back: '← Home',

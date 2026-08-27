@@ -5,19 +5,27 @@ import { siteConfig } from '@/lib/site-config';
 import { useLang } from './lang-provider';
 import { t } from '@/lib/i18n';
 
-const hiddenLines = [
-  'Build. Ship. Refine.',
-  'Sometimes the best feature is the one you did not add.',
-  'Keep it small. Keep it sharp.',
-  'Still tinkering...',
-];
+const hiddenLines = {
+  zh: [
+    '构建。发布。打磨。',
+    '有时最好的功能，是你没做的那个。',
+    '保持小，保持锋利。',
+    '还在折腾……',
+  ],
+  en: [
+    'Build. Ship. Refine.',
+    'Sometimes the best feature is the one you did not add.',
+    'Keep it small. Keep it sharp.',
+    'Still tinkering...',
+  ],
+} as const;
 
 export function Hero() {
   const { lang } = useLang();
   const [secretIndex, setSecretIndex] = useState(0);
 
   const cycleSecret = () => {
-    setSecretIndex((current) => (current + 1) % hiddenLines.length);
+    setSecretIndex((current) => (current + 1) % hiddenLines[lang].length);
   };
 
   return (
@@ -33,9 +41,9 @@ export function Hero() {
             {t(lang, 'hero.greeting')} {siteConfig.name}
           </h1>
           <p className="max-w-3xl text-base leading-8 text-foreground/70 sm:text-lg">
-            {siteConfig.tagline}
+            {siteConfig.tagline[lang]}
             <br />
-            {siteConfig.description}
+            {siteConfig.description[lang]}
           </p>
         </div>
 
@@ -70,7 +78,7 @@ export function Hero() {
 
           <div className="space-y-3 rounded-xl border border-border bg-background p-4 font-mono text-sm leading-7 text-foreground/80">
             <div>&gt; {t(lang, 'hero.focus')}</div>
-            <div className="text-foreground/60">{hiddenLines[secretIndex]}</div>
+            <div className="text-foreground/60">{hiddenLines[lang][secretIndex]}</div>
             <div>&gt; {t(lang, 'hero.mode')}</div>
             <div className="text-foreground/60">{t(lang, 'hero.modeValue')}</div>
           </div>

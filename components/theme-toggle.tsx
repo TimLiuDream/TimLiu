@@ -1,6 +1,8 @@
-"use client";
+'use client';
 
 import { useEffect, useState } from 'react';
+import { useLang } from '@/components/lang-provider';
+import { t } from '@/lib/i18n';
 
 type Theme = 'light' | 'dark';
 
@@ -11,6 +13,7 @@ function applyTheme(theme: Theme) {
 }
 
 export function ThemeToggle() {
+  const { lang } = useLang();
   const [mounted, setMounted] = useState(false);
   const [theme, setTheme] = useState<Theme>('light');
 
@@ -30,15 +33,21 @@ export function ThemeToggle() {
     applyTheme(nextTheme);
   };
 
+  const label = mounted
+    ? theme === 'dark'
+      ? t(lang, 'themeToggle.dark')
+      : t(lang, 'themeToggle.light')
+    : t(lang, 'themeToggle.theme');
+
   return (
     <button
       type="button"
-      aria-label="切换暗色模式"
+      aria-label={t(lang, 'themeToggle.aria')}
       onClick={toggleTheme}
       className="inline-flex items-center gap-2 rounded-xl border border-border bg-card px-3 py-2 text-xs text-foreground/70 transition-all duration-200 hover:-translate-y-0.5 hover:border-foreground/25 hover:text-foreground"
     >
       <span className="font-mono">{mounted ? (theme === 'dark' ? '☾' : '☀') : '◐'}</span>
-      <span>{mounted ? (theme === 'dark' ? 'Dark' : 'Light') : 'Theme'}</span>
+      <span>{label}</span>
     </button>
   );
 }
