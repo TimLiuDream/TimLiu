@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from 'react';
-import { AnimatedCharacter } from '@/components/animated-character';
+import { HeroAvatarImage } from '@/components/animated-3d-character';
 import { siteConfig } from '@/lib/site-config';
 import { useLang } from './lang-provider';
 import { t } from '@/lib/i18n';
@@ -52,26 +52,12 @@ export function Hero() {
       </div>
 
       <aside className="relative min-w-0 overflow-hidden rounded-2xl border border-border bg-card shadow-soft transition-transform duration-200 hover:-translate-y-0.5">
-        <div className="absolute right-4 top-4 z-20 text-xs text-foreground/35">&lt;&gt; {t(lang, 'hero.geekMode')}</div>
-
-        <div className="relative min-h-[330px] overflow-hidden border-b border-border bg-gradient-to-br from-background via-card to-muted px-6 pt-8 sm:min-h-[380px]">
-          <div className="absolute left-6 top-7 z-20 rounded-full border border-border bg-background/80 px-3 py-1 font-mono text-[11px] text-foreground/45 shadow-soft backdrop-blur">
-            {lang === 'zh' ? '还在构建中' : 'still building'}
-          </div>
-          <button
-            type="button"
-            onClick={cycleSecret}
-            className="animate-avatar-bubble absolute right-7 top-20 z-20 rounded-full border border-border bg-foreground px-3 py-1.5 font-mono text-[11px] text-background shadow-soft transition-transform duration-200 hover:-translate-y-0.5"
-            aria-label={lang === 'zh' ? '切换头像彩蛋' : 'Cycle avatar easter egg'}
-            title={lang === 'zh' ? '点击切换彩蛋' : 'Click to cycle'}
-          >
-            {lang === 'zh' ? '点我' : 'click me'}
-          </button>
-          <div className="animate-avatar-scan absolute inset-x-8 top-1/2 h-px bg-primary/20" />
-          <div className="relative mx-auto mt-7 h-[310px] max-w-[410px] sm:h-[370px] sm:max-w-[460px]">
-            <AnimatedCharacter />
-            <div className="pointer-events-none absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-card via-card/80 to-transparent" />
-            <div className="absolute bottom-2 left-1/2 h-8 w-44 -translate-x-1/2 rounded-full bg-foreground/10 blur-xl" />
+        <div className="relative min-h-[330px] overflow-hidden border-b border-border px-6 sm:min-h-[380px]">
+          <div className="relative mx-auto h-[330px] max-w-[430px] sm:h-[380px] sm:max-w-[500px]">
+            <HeroAvatarImage
+              onActivate={cycleSecret}
+              ariaLabel={lang === 'zh' ? '点击卡通头像切换彩蛋' : 'Click the cartoon avatar to cycle the easter egg'}
+            />
           </div>
         </div>
 
