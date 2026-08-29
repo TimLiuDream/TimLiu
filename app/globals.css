@@ -47,12 +47,167 @@
   }
 }
 
+@keyframes avatarFloat {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-10px) scale(1.012);
+  }
+}
+
+@keyframes avatarBubble {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(-2deg);
+  }
+  50% {
+    transform: translate3d(4px, -7px, 0) rotate(2deg);
+  }
+}
+
+@keyframes avatarScan {
+  0%,
+  100% {
+    opacity: 0.18;
+    transform: translateY(-72px) scaleX(0.88);
+  }
+  50% {
+    opacity: 0.42;
+    transform: translateY(72px) scaleX(1);
+  }
+}
+
+@keyframes characterFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes characterHead {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-3px) rotate(1deg);
+  }
+}
+
+@keyframes characterBlink {
+  0%,
+  46%,
+  50%,
+  100% {
+    transform: scaleY(1);
+  }
+  48% {
+    transform: scaleY(0.08);
+  }
+}
+
+@keyframes characterWave {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(-4deg);
+  }
+}
+
+@keyframes characterRocket {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-2deg);
+  }
+  50% {
+    transform: translateY(-5px) rotate(2deg);
+  }
+}
+
+@keyframes characterCode {
+  0%,
+  100% {
+    opacity: 0.25;
+  }
+  50% {
+    opacity: 0.95;
+  }
+}
+
 .animate-fade-up {
   animation: fadeUp 240ms ease-out;
 }
 
 .animate-cursor-blink {
   animation: cursorBlink 1.2s steps(1, end) infinite;
+}
+
+.animate-avatar-float {
+  animation: avatarFloat 5.2s ease-in-out infinite;
+}
+
+.animate-avatar-bubble {
+  animation: avatarBubble 4.4s ease-in-out infinite;
+}
+
+.animate-avatar-scan {
+  animation: avatarScan 6s ease-in-out infinite;
+}
+
+.animated-character {
+  height: 100%;
+  transform-origin: 50% 100%;
+  animation: characterFloat 5.2s ease-in-out infinite;
+}
+
+.animated-character-head {
+  transform-origin: 262px 255px;
+  animation: characterHead 4.8s ease-in-out infinite;
+}
+
+.animated-character-eyes {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: characterBlink 5.8s ease-in-out infinite;
+}
+
+.animated-character-wave {
+  transform-box: fill-box;
+  transform-origin: 360px 422px;
+  animation: characterWave 3.8s ease-in-out infinite;
+}
+
+.animated-character-rocket {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: characterRocket 3.4s ease-in-out infinite;
+}
+
+.animated-character-code {
+  animation: characterCode 2.6s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-fade-up,
+  .animate-cursor-blink,
+  .animate-avatar-float,
+  .animate-avatar-bubble,
+  .animate-avatar-scan,
+  .animated-character,
+  .animated-character-head,
+  .animated-character-eyes,
+  .animated-character-wave,
+  .animated-character-rocket,
+  .animated-character-code {
+    animation: none;
+  }
 }
 
 * {

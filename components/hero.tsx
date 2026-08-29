@@ -1,7 +1,7 @@
 "use client";
 
-import Image from 'next/image';
 import { useState } from 'react';
+import { AnimatedCharacter } from '@/components/animated-character';
 import { siteConfig } from '@/lib/site-config';
 import { useLang } from './lang-provider';
 import { t } from '@/lib/i18n';
@@ -51,29 +51,35 @@ export function Hero() {
         <p className="max-w-2xl text-sm leading-7 text-foreground/55">{t(lang, 'hero.description')}</p>
       </div>
 
-      <aside className="relative min-w-0 rounded-2xl border border-border bg-card p-6 shadow-soft transition-transform duration-200 hover:-translate-y-0.5 sm:p-7 lg:p-8">
-        <div className="absolute right-4 top-4 text-xs text-foreground/35">&lt;&gt; {t(lang, 'hero.geekMode')}</div>
-        <div className="space-y-6">
+      <aside className="relative min-w-0 overflow-hidden rounded-2xl border border-border bg-card shadow-soft transition-transform duration-200 hover:-translate-y-0.5">
+        <div className="absolute right-4 top-4 z-20 text-xs text-foreground/35">&lt;&gt; {t(lang, 'hero.geekMode')}</div>
+
+        <div className="relative min-h-[330px] overflow-hidden border-b border-border bg-gradient-to-br from-background via-card to-muted px-6 pt-8 sm:min-h-[380px]">
+          <div className="absolute left-6 top-7 z-20 rounded-full border border-border bg-background/80 px-3 py-1 font-mono text-[11px] text-foreground/45 shadow-soft backdrop-blur">
+            {lang === 'zh' ? '还在构建中' : 'still building'}
+          </div>
+          <button
+            type="button"
+            onClick={cycleSecret}
+            className="animate-avatar-bubble absolute right-7 top-20 z-20 rounded-full border border-border bg-foreground px-3 py-1.5 font-mono text-[11px] text-background shadow-soft transition-transform duration-200 hover:-translate-y-0.5"
+            aria-label={lang === 'zh' ? '切换头像彩蛋' : 'Cycle avatar easter egg'}
+            title={lang === 'zh' ? '点击切换彩蛋' : 'Click to cycle'}
+          >
+            {lang === 'zh' ? '点我' : 'click me'}
+          </button>
+          <div className="animate-avatar-scan absolute inset-x-8 top-1/2 h-px bg-primary/20" />
+          <div className="relative mx-auto mt-7 h-[310px] max-w-[410px] sm:h-[370px] sm:max-w-[460px]">
+            <AnimatedCharacter />
+            <div className="pointer-events-none absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-card via-card/80 to-transparent" />
+            <div className="absolute bottom-2 left-1/2 h-8 w-44 -translate-x-1/2 rounded-full bg-foreground/10 blur-xl" />
+          </div>
+        </div>
+
+        <div className="space-y-6 p-6 sm:p-7 lg:p-8">
           <div className="flex items-center gap-4">
-            <button
-              type="button"
-              onClick={cycleSecret}
-              className="group relative h-16 w-16 overflow-hidden rounded-2xl border border-border bg-background transition-transform duration-200 hover:rotate-3"
-              aria-label="切换头像彩蛋"
-              title="点击切换彩蛋"
-            >
-              <Image
-                src="/avatar.jpg"
-                alt={siteConfig.name}
-                width={64}
-                height={64}
-                priority
-                className="h-full w-full object-cover transition-opacity duration-200 group-hover:opacity-90"
-              />
-              <span className="absolute inset-0 flex items-center justify-center bg-background/0 text-[11px] font-mono text-foreground/0 transition-all duration-200 group-hover:bg-background/60 group-hover:text-foreground/80">
-                {secretIndex === 0 ? 'TL' : '>'}
-              </span>
-            </button>
+            <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-border bg-background font-mono text-sm text-foreground/70">
+              {secretIndex === 0 ? 'TL' : '>'}
+            </div>
             <div>
               <div className="text-sm font-medium">{siteConfig.name}</div>
               <div className="text-sm text-foreground/60">{t(lang, 'hero.subtitle')}</div>
