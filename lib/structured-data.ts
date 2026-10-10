@@ -53,7 +53,9 @@ export const homeStructuredData = {
           name: project.name,
           url: project.href,
           description: project.details.zh,
-          applicationCategory: 'ProductivityApplication',
+          applicationCategory: 'applicationCategory' in project
+            ? project.applicationCategory
+            : 'ProductivityApplication',
           creator: { '@id': personId },
         },
       })),

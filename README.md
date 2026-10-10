@@ -96,6 +96,9 @@ npm run dev
 
 ## Projects
 
+- **AlphaStrategy** — 币安 Alpha 空投策略回测器，对比四种处置策略，支持参数与样本筛选，附历史回测报告和数据口径说明。
+  部署地址：https://alpha-strategy.vercel.app/
+
 - **SquareOps** — 币安广场内容工厂（活动雷达 → 材料评分 → 选题 → 写作 → 一键发布）
   部署地址：https://square.timliu.xyz
 - **ContentPolish** — 内容打磨工具

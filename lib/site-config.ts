@@ -3,8 +3,8 @@ export const siteConfig = {
   url: 'https://tim-liu.vercel.app',
   title: 'TimLiu · Golang / Web3 / Side Projects',
   summary: {
-    zh: 'TimLiu 的个人主页：使用 Golang 开发工具与 Side Project，参与 Web3 空投和测试网交互，维护 SquareOps 与 ContentPolish。欢迎通过 Telegram 联系交流与合作。',
-    en: 'TimLiu builds tools and side projects with Golang, explores Web3 airdrops and testnets, and maintains SquareOps and ContentPolish. Contact TimLiu on Telegram for ideas and collaboration.',
+    zh: 'TimLiu 的个人主页：使用 Golang 开发工具与 Side Project，参与 Web3 空投和测试网交互，维护 SquareOps、ContentPolish 与 AlphaStrategy。欢迎通过 Telegram 联系交流与合作。',
+    en: 'TimLiu builds tools and side projects with Golang, explores Web3 airdrops and testnets, and maintains SquareOps, ContentPolish, and AlphaStrategy. Contact TimLiu on Telegram for ideas and collaboration.',
   },
   tagline: {
     zh: 'Web3 撸空投 / Golang / 折腾 Side Project',
@@ -30,6 +30,17 @@ export const siteConfig = {
     { label: 'Easter egg', value: 'Small, hidden, fun' },
   ],
   projects: [
+    {
+      id: 'alpha-strategy',
+      name: 'AlphaStrategy',
+      description: { zh: '币安 Alpha 空投策略回测器', en: 'Binance Alpha airdrop backtester' },
+      details: {
+        zh: '通过历史数据比较领取即卖、目标倍数卖出、一直持有和半卖半留四种策略，支持倍数、滑点、年份与公链筛选，附回测报告和数据口径说明。结果为历史模拟与持仓估值。',
+        en: 'Compare four Binance Alpha airdrop strategies using historical data: sell on receipt, sell at a target multiple, hold, or sell half and hold half. Adjust the target multiple and slippage, filter by year and chain, and review the backtest report and methodology. Results are historical simulations and holding valuations.',
+      },
+      href: 'https://alpha-strategy.vercel.app/',
+      applicationCategory: 'FinanceApplication',
+    },
     {
       id: 'squareops',
       name: 'SquareOps',
