@@ -3,8 +3,8 @@ export const siteConfig = {
   url: 'https://tim-liu.vercel.app',
   title: 'TimLiu · Golang / Web3 / Side Projects',
   summary: {
-    zh: 'TimLiu 的个人主页：使用 Golang 开发工具与 Side Project，参与 Web3 空投和测试网交互，维护 SquareOps、ContentPolish 与 AlphaStrategy。欢迎通过 Telegram 联系交流与合作。',
-    en: 'TimLiu builds tools and side projects with Golang, explores Web3 airdrops and testnets, and maintains SquareOps, ContentPolish, and AlphaStrategy. Contact TimLiu on Telegram for ideas and collaboration.',
+    zh: 'TimLiu 的个人主页：使用 Golang 开发工具与 Side Project，参与 Web3 空投和测试网交互，维护 SquareOps、ContentPolish 与 AlphaStrategy。交流与合作首选 Telegram。',
+    en: 'TimLiu builds tools and side projects with Golang, explores Web3 airdrops and testnets, and maintains SquareOps, ContentPolish, and AlphaStrategy. Telegram is the preferred contact for ideas and collaboration.',
   },
   tagline: {
     zh: 'Web3 撸空投 / Golang / 折腾 Side Project',
@@ -21,7 +21,8 @@ export const siteConfig = {
   contacts: [
     { label: 'Telegram', value: '@dreamtimliu', href: 'https://t.me/dreamtimliu', primary: true },
     { label: 'GitHub', value: 'TimLiuDream', href: 'https://github.com/TimLiuDream' },
-    { label: 'Twitter', value: '@timliu92', href: 'https://x.com/timliu92' },
+    { label: 'X', value: '@timliu92', href: 'https://x.com/timliu92' },
+    { label: 'WeChat', value: 'liufotian1992' },
   ],
   tags: ['Go', 'Web3', 'DevTools', 'Side Projects'],
   stats: [

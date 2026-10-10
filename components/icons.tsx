@@ -17,13 +17,20 @@ export function GithubIcon(props: React.SVGProps<SVGSVGElement>) {
   );
 }
 
-export function TwitterIcon(props: React.SVGProps<SVGSVGElement>) {
+export function XIcon(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" {...props}>
-      <path
-        fill="currentColor"
-        d="M19.8 7.1c.01.2.01.4.01.6 0 6.2-4.7 13.3-13.3 13.3-2.6 0-5-.7-7-1.9.4.1.9.1 1.3.1 2.1 0 4.1-.7 5.6-1.8-2-.1-3.7-1.3-4.3-3.1.3.1.7.1 1 .1.5 0 1-.1 1.5-.2-2.1-.4-3.6-2.2-3.6-4.4v-.1c.6.3 1.3.5 2 .5-1.2-.8-2-2.2-2-3.7 0-.8.2-1.5.5-2.1 2.2 2.7 5.4 4.5 9 4.7-.1-.3-.1-.7-.1-1.1 0-2.6 2.1-4.7 4.7-4.7 1.4 0 2.6.6 3.5 1.5.9-.2 1.8-.5 2.5-1-.3.9-.9 1.7-1.7 2.1.8-.1 1.6-.3 2.3-.6-.5.8-1.1 1.5-1.9 2.1Z"
-      />
+      <path d="M18.9 2H22l-6.8 7.8L23.2 22h-6.3L12 14.6 5.5 22H2.3l7.8-8.9L.8 2h6.5l4.4 6.7L18.9 2ZM17.8 20h1.7L6.2 4H4.4l13.4 16Z" fill="currentColor" />
+    </svg>
+  );
+}
+
+export function WeChatIcon(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" {...props}>
+      <path d="M20 11.5a8 8 0 0 1-8 8 9 9 0 0 1-3.5-.7L4 20l1.2-4A8 8 0 1 1 20 11.5Z" stroke="currentColor" strokeWidth="1.7" strokeLinejoin="round" />
+      <circle cx="9" cy="11" r="1" fill="currentColor" />
+      <circle cx="15" cy="11" r="1" fill="currentColor" />
     </svg>
   );
 }

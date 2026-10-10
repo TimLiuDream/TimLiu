@@ -13,7 +13,7 @@ export const siteStructuredData = {
       url: siteConfig.url,
       description: siteConfig.about.zh,
       knowsAbout: [...siteConfig.tags],
-      sameAs: siteConfig.contacts.map((contact) => contact.href),
+      sameAs: siteConfig.contacts.flatMap((contact) => 'href' in contact ? [contact.href] : []),
     },
     {
       '@type': 'WebSite',

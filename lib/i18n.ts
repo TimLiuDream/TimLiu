@@ -25,7 +25,8 @@ export const translations = {
     contact: {
       title: '联系方式',
       description: '如果你想聊合作、项目、想法，欢迎联系我。',
-      telegram: 'Telegram',
+      preferred: '交流与合作首选',
+      wechat: '微信',
     },
     footer: {
       builtWith: 'Built with curiosity.',
@@ -88,7 +89,8 @@ export const translations = {
     contact: {
       title: 'Contact',
       description: 'Feel free to reach out for collaboration, ideas, or just to say hi.',
-      telegram: 'Telegram',
+      preferred: 'Preferred for ideas and collaboration',
+      wechat: 'WeChat',
     },
     footer: {
       builtWith: 'Built with curiosity.',

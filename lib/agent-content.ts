@@ -1,5 +1,14 @@
-import { siteConfig } from '@/lib/site-config';
+import { type Contact, siteConfig } from '@/lib/site-config';
 import { t } from '@/lib/i18n';
+
+function formatContact(contact: Contact) {
+  const label = contact.label === 'WeChat' ? '微信 / WeChat' : contact.label;
+  const value = 'href' in contact ? '[' + contact.value + '](' + contact.href + ')' : contact.value;
+  const preference = 'primary' in contact && contact.primary
+    ? ' — 交流与合作首选 / Preferred for ideas and collaboration'
+    : '';
+  return '- ' + label + ': ' + value + preference;
+}
 
 // All representations share the same public facts as the visible website.
 export function getLlmsIndex() {
@@ -26,7 +35,7 @@ export function getLlmsIndex() {
     '',
     '## 联系 / Contact',
     '',
-    ...siteConfig.contacts.map((contact) => '- [' + contact.label + '](' + contact.href + '): ' + contact.value),
+    ...siteConfig.contacts.map(formatContact),
     '',
   ].join('\n');
 }
@@ -83,7 +92,7 @@ export function getFullProfile() {
     '',
     '欢迎交流项目、想法与合作。 / Get in touch for projects, ideas, and collaboration.',
     '',
-    ...siteConfig.contacts.map((contact) => '- ' + contact.label + ': [' + contact.value + '](' + contact.href + ')'),
+    ...siteConfig.contacts.map(formatContact),
     '',
   ].join('\n');
 }
