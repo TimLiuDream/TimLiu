@@ -1,5 +1,7 @@
+import { siteConfig } from '@/lib/site-config';
+
 export async function GET() {
-  const siteUrl = 'https://timliu.vercel.app';
+  const siteUrl = siteConfig.url;
 
   const feed = `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">

@@ -17,25 +17,25 @@ export function ProjectsSection() {
             {siteConfig.projects.map((project) => (
               <a
                 key={project.name}
+                id={project.id}
                 href={project.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex items-center gap-3 rounded-xl border border-border bg-card px-4 py-3 transition-all duration-200 hover:-translate-y-0.5 hover:border-foreground/25 hover:bg-muted"
+                className="group block rounded-xl border border-border bg-card px-4 py-3 transition-all duration-200 hover:-translate-y-0.5 hover:border-foreground/25 hover:bg-muted"
               >
-                <span className="font-mono text-sm font-medium text-foreground/90 group-hover:text-primary">
-                  {project.name}
-                </span>
-                <span className="hidden text-sm text-foreground/50 sm:inline">
-                  {'// '}
-                  {project.description[lang]}
-                </span>
-                <span className="text-sm text-foreground/50 sm:hidden">
-                  {'// '}
-                  {project.description[lang]}
-                </span>
-                <span className="ml-auto text-foreground/30 transition-colors group-hover:text-foreground/60">
-                  ↗
-                </span>
+                <div className="flex items-center gap-3">
+                  <span className="font-mono text-sm font-medium text-foreground/90 group-hover:text-primary">
+                    {project.name}
+                  </span>
+                  <span className="text-sm text-foreground/50">
+                    {'// '}
+                    {project.description[lang]}
+                  </span>
+                  <span className="ml-auto text-foreground/30 transition-colors group-hover:text-foreground/60">
+                    ↗
+                  </span>
+                </div>
+                <p className="mt-2 text-sm leading-6 text-foreground/60">{project.details[lang]}</p>
               </a>
             ))}
           </div>

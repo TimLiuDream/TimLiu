@@ -1,34 +1,11 @@
 import type { Metadata } from 'next';
 import { Analytics } from '@vercel/analytics/react';
 import { LangProvider } from '@/components/lang-provider';
+import { siteMetadata } from '@/lib/site-metadata';
+import { serializeStructuredData, siteStructuredData } from '@/lib/structured-data';
 import './globals.css';
 
-export const metadata: Metadata = {
-  metadataBase: new URL('https://timliu.vercel.app'),
-  title: 'TimLiu',
-  description: 'TimLiu 的极简个人主页',
-  icons: {
-    icon: '/favicon.svg',
-  },
-  openGraph: {
-    title: 'TimLiu',
-    description: 'TimLiu 的极简个人主页',
-    images: [
-      {
-        url: '/og-image',
-        width: 1200,
-        height: 630,
-        type: 'image/png',
-      },
-    ],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'TimLiu',
-    description: 'TimLiu 的极简个人主页',
-    images: ['/og-image'],
-  },
-};
+export const metadata: Metadata = siteMetadata;
 
 export default function RootLayout({
   children,
@@ -37,6 +14,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="zh-CN" suppressHydrationWarning>
+      <head>
+        <link rel="describedby" href="/llms.txt" type="text/plain" />
+      </head>
       <body>
         <script
           dangerouslySetInnerHTML={{
@@ -48,17 +28,7 @@ export default function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              '@context': 'https://schema.org',
-              '@type': 'Person',
-              name: 'TimLiu',
-              url: 'https://timliu.vercel.app',
-              sameAs: [
-                'https://github.com/TimLiuDream',
-                'https://t.me/dreamtimliu',
-                'https://x.com/timliu92',
-              ],
-            }),
+            __html: serializeStructuredData(siteStructuredData),
           }}
         />
       </body>
