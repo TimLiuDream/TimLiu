@@ -3,8 +3,8 @@ export const siteConfig = {
   url: 'https://tim-liu.vercel.app',
   title: 'TimLiu · Golang / Web3 / Side Projects',
   summary: {
-    zh: 'TimLiu 的个人主页：使用 Golang 开发工具与 Side Project，参与 Web3 空投和测试网交互，维护 SquareOps、ContentPolish 与 AlphaStrategy。交流与合作首选 Telegram。',
-    en: 'TimLiu builds tools and side projects with Golang, explores Web3 airdrops and testnets, and maintains SquareOps, ContentPolish, and AlphaStrategy. Telegram is the preferred contact for ideas and collaboration.',
+    zh: 'TimLiu 的个人主页：使用 Golang 开发工具与 Side Project，参与 Web3 空投和测试网交互，维护 DesignDesk、SquareOps、ContentPolish 与 AlphaStrategy。交流与合作首选 Telegram。',
+    en: 'TimLiu builds tools and side projects with Golang, explores Web3 airdrops and testnets, and maintains DesignDesk, SquareOps, ContentPolish, and AlphaStrategy. Telegram is the preferred contact for ideas and collaboration.',
   },
   tagline: {
     zh: 'Web3 撸空投 / Golang / 折腾 Side Project',
@@ -31,6 +31,17 @@ export const siteConfig = {
     { label: 'Easter egg', value: 'Small, hidden, fun' },
   ],
   projects: [
+    {
+      id: 'design-desk',
+      name: 'DesignDesk',
+      description: { zh: 'AI 图片创作与封面设计工作台', en: 'AI image creation and cover design workspace' },
+      details: {
+        zh: '面向内容创作者与电商，从提示词或参考图生成封面和商品场景图，支持抠图、换背景、擦除与扩图，提供免费基础图片工具及素材管理，结果可预览、下载。AI 生成与编辑按次计费。',
+        en: 'Create covers and product scenes from prompts or reference images, with background removal and replacement, object erasing, and outpainting. Built for content creators and e-commerce, with free basic image tools, asset management, and result previews and downloads. AI generation and editing are charged per use.',
+      },
+      href: 'https://designdesk.timliu.xyz/',
+      applicationCategory: 'DesignApplication',
+    },
     {
       id: 'alpha-strategy',
       name: 'AlphaStrategy',

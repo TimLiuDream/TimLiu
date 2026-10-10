@@ -96,6 +96,9 @@ npm run dev
 
 ## Projects
 
+- **DesignDesk** — AI 图片创作与封面设计工作台，支持文生图、参考图生成、商品场景图与图片编辑，提供免费基础图片工具和素材管理。
+  部署地址：https://designdesk.timliu.xyz/
+
 - **AlphaStrategy** — 币安 Alpha 空投策略回测器，对比四种处置策略，支持参数与样本筛选，附历史回测报告和数据口径说明。
   部署地址：https://alpha-strategy.vercel.app/
 
