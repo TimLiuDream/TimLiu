@@ -1,6 +1,6 @@
 'use client';
 
-import { createContext, useContext, useEffect, useState, useCallback } from 'react';
+import { createContext, useCallback, useContext, useEffect, useSyncExternalStore } from 'react';
 import type { Lang } from '@/lib/i18n';
 
 const LangContext = createContext<{
@@ -8,32 +8,46 @@ const LangContext = createContext<{
   setLang: (lang: Lang) => void;
 } | null>(null);
 
+const listeners = new Set<() => void>();
+
+function readStoredLang(): Lang {
+  try {
+    const stored = localStorage.getItem('lang');
+    return stored === 'en' || stored === 'zh' ? stored : 'zh';
+  } catch {
+    return 'zh';
+  }
+}
+
+function subscribe(listener: () => void) {
+  listeners.add(listener);
+  return () => listeners.delete(listener);
+}
+
+function emit() {
+  listeners.forEach((listener) => listener());
+}
+
+function getServerLang(): Lang {
+  return 'zh';
+}
+
+function applyLang(lang: Lang) {
+  document.documentElement.lang = lang === 'en' ? 'en' : 'zh-CN';
+}
+
 export function LangProvider({ children }: { children: React.ReactNode }) {
-  const [lang, setLangState] = useState<Lang>('zh');
-  const [mounted, setMounted] = useState(false);
+  const lang = useSyncExternalStore(subscribe, readStoredLang, getServerLang);
 
   useEffect(() => {
-    const stored = localStorage.getItem('lang') as Lang | null;
-    if (stored === 'en' || stored === 'zh') {
-      setLangState(stored);
-      document.documentElement.lang = stored === 'en' ? 'en' : 'zh-CN';
-    }
-    setMounted(true);
+    applyLang(readStoredLang());
   }, []);
 
   const setLang = useCallback((next: Lang) => {
-    setLangState(next);
     localStorage.setItem('lang', next);
-    document.documentElement.lang = next === 'en' ? 'en' : 'zh-CN';
+    applyLang(next);
+    emit();
   }, []);
-
-  if (!mounted) {
-    return (
-      <LangContext.Provider value={{ lang: 'zh', setLang }}>
-        {children}
-      </LangContext.Provider>
-    );
-  }
 
   return (
     <LangContext.Provider value={{ lang, setLang }}>

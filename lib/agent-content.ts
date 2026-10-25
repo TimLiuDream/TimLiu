@@ -1,3 +1,6 @@
+import { projectHref, projects } from '@/data/projects';
+import { toolCategoryLabel, tools } from '@/data/tools';
+import { web3Entries } from '@/data/web3';
 import { type Contact, siteConfig } from '@/lib/site-config';
 import { t } from '@/lib/i18n';
 
@@ -10,6 +13,15 @@ function formatContact(contact: Contact) {
   return '- ' + label + ': ' + value + preference;
 }
 
+function formatProjectLine(project: (typeof projects)[number]) {
+  const href = projectHref(project);
+  const summary = project.problem.zh + ' ' + project.problem.en;
+  if (!href) return '- ' + project.name + ': ' + summary + ' (URL TODO)';
+  return '- [' + project.name + '](' + href + '): ' + summary;
+}
+
+const web3Disclaimer = '只收录尚未发币的项目，积分不保证可兑换代币，不构成投资建议。 Only projects that have not issued a token are listed. Points do not guarantee a redeemable token. This is not investment advice.';
+
 // All representations share the same public facts as the visible website.
 export function getLlmsIndex() {
   return [
@@ -19,19 +31,21 @@ export function getLlmsIndex() {
     '',
     siteConfig.summary.en,
     '',
-    '这是个人主页，介绍站点主人、个人项目与公开联系方式。项目的实际功能请以各项目网站为准。',
-    'This is a personal website with a profile, projects, and public contact links. See each project website for its current features.',
+    '这是个人主页，介绍站点主人、个人项目、AI 工具、Web3 早期项目与公开联系方式。项目的实际功能请以各项目网站为准。',
+    'This is a personal website with a profile, projects, AI tools, an early Web3 tracker, and public contact links. See each project website for its current features.',
     '',
     '## 内容 / Content',
     '',
-    '- [完整介绍 / Full profile](' + siteConfig.url + '/llms-full.txt): 中英文纯文本，包含个人背景、项目用途、近况及联系方式，无需执行 JavaScript。',
+    '- [完整介绍 / Full profile](' + siteConfig.url + '/llms-full.txt): 中英文纯文本，包含个人背景、项目、工具、Web3 追踪及联系方式，无需执行 JavaScript。',
     '- [首页 / Homepage](' + siteConfig.url + '/): 个人介绍、项目和联系方式。',
+    '- [AI 工具 / Tools](' + siteConfig.url + '/tools): 在用的 AI 工具，含一句话用途和分类。',
+    '- [Web3](' + siteConfig.url + '/web3): 尚未发币的早期项目追踪。' + web3Disclaimer,
     '- [近况 / Now](' + siteConfig.url + '/now): 最近在做什么；以页面标注的更新日期为准。',
     '- [RSS](' + siteConfig.url + '/feed.xml): 公开内容订阅。',
     '',
     '## 项目 / Projects',
     '',
-    ...siteConfig.projects.map((project) => '- [' + project.name + '](' + project.href + '): ' + project.details.zh + ' ' + project.details.en),
+    ...projects.map(formatProjectLine),
     '',
     '## 联系 / Contact',
     '',
@@ -58,18 +72,47 @@ export function getFullProfile() {
     '',
     '## 项目 / Projects',
     '',
-    ...siteConfig.projects.flatMap((project) => [
-      '### ' + project.name,
+    ...projects.flatMap((project) => {
+      const href = projectHref(project);
+      return [
+        '### ' + project.name,
+        '',
+        project.problem.zh,
+        '',
+        project.problem.en,
+        '',
+        ...(project.details ? [project.details.zh, '', project.details.en, ''] : []),
+        'Project website: ' + (href ?? 'TODO'),
+        '',
+      ];
+    }),
+    '## AI 工具 / Tools',
+    '',
+    ...tools.flatMap((tool) => [
+      '### ' + tool.name,
       '',
-      project.description.zh + ' / ' + project.description.en,
+      tool.desc.zh,
       '',
-      project.details.zh,
+      tool.desc.en,
       '',
-      project.details.en,
-      '',
-      'Project website: ' + project.href,
+      'Category: ' + toolCategoryLabel(tool.category, 'zh') + ' / ' + toolCategoryLabel(tool.category, 'en'),
+      'Website: ' + (tool.url.trim() || 'TODO'),
+      ...(tool.tweet.trim() ? ['Post: ' + tool.tweet] : []),
       '',
     ]),
+    '## Web3',
+    '',
+    web3Disclaimer,
+    '',
+    ...web3Entries.map((entry) => (
+      '- [' + entry.name + '](' + entry.url + ') — ' + entry.cost + ' / ' + entry.type
+      + ' — ' + entry.status.zh + ' / ' + entry.status.en
+      + ' — ' + entry.note.zh + ' / ' + entry.note.en
+      + ' — updated ' + entry.updated
+    )),
+    '',
+    'Source: ' + siteConfig.url + '/web3',
+    '',
     '## 近况 / Now',
     '',
     t('zh', 'now.updated') + ' / ' + t('en', 'now.updated'),

@@ -1,3 +1,4 @@
+import { projectHref, projects } from '@/data/projects';
 import { siteConfig } from '@/lib/site-config';
 
 const personId = siteConfig.url + '/#person';
@@ -44,18 +45,20 @@ export const homeStructuredData = {
       '@type': 'ItemList',
       '@id': siteConfig.url + '/#projects',
       name: 'TimLiu 的项目 / Projects',
-      itemListElement: siteConfig.projects.map((project, index) => ({
+      itemListElement: projects.flatMap((project) => {
+        const href = projectHref(project);
+        if (!href) return [];
+        return [{ project, href }];
+      }).map(({ project, href }, index) => ({
         '@type': 'ListItem',
         position: index + 1,
         item: {
           '@type': 'SoftwareApplication',
           '@id': siteConfig.url + '/#' + project.id,
           name: project.name,
-          url: project.href,
-          description: project.details.zh,
-          applicationCategory: 'applicationCategory' in project
-            ? project.applicationCategory
-            : 'ProductivityApplication',
+          url: href,
+          description: project.details ? project.problem.zh + ' ' + project.details.zh : project.problem.zh,
+          applicationCategory: project.applicationCategory ?? 'ProductivityApplication',
           creator: { '@id': personId },
         },
       })),

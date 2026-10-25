@@ -1,8 +1,10 @@
-"use client";
+'use client';
 
 import { useState } from 'react';
 import { HeroAvatarImage } from '@/components/animated-3d-character';
-import { siteConfig } from '@/lib/site-config';
+import { XIcon } from '@/components/icons';
+import { projects } from '@/data/projects';
+import { siteConfig, xFollowerCount } from '@/lib/site-config';
 import { useLang } from './lang-provider';
 import { t } from '@/lib/i18n';
 
@@ -21,13 +23,29 @@ const hiddenLines = {
   ],
 } as const;
 
-export function Hero() {
+function formatCount(value: number): string {
+  return value.toLocaleString('en-US');
+}
+
+export function Hero({ githubStars }: { githubStars: number | null }) {
   const { lang } = useLang();
   const [secretIndex, setSecretIndex] = useState(0);
+  const projectCount = projects.length;
+  const xHref = siteConfig.contacts.find((contact) => contact.label === 'X');
+  const followHref = xHref && 'href' in xHref ? xHref.href : 'https://x.com/timliu92';
 
   const cycleSecret = () => {
     setSecretIndex((current) => (current + 1) % hiddenLines[lang].length);
   };
+
+  const projectLabel = t(lang, projectCount === 1 ? 'hero.statProject' : 'hero.statProjects');
+  const stats = [`${formatCount(projectCount)} ${projectLabel}`];
+  if (githubStars != null) {
+    stats.push(`${formatCount(githubStars)} ${t(lang, 'hero.statStars')}`);
+  }
+  if (typeof xFollowerCount === 'number') {
+    stats.push(`${formatCount(xFollowerCount)} ${t(lang, 'hero.statFollowers')}`);
+  }
 
   return (
     <div className="grid flex-1 items-center gap-14 py-16 lg:grid-cols-[1.28fr_1.08fr] lg:gap-18 lg:py-18">
@@ -37,18 +55,29 @@ export function Hero() {
           {t(lang, 'hero.badge')}
         </div>
 
-        <div className="space-y-5">
-          <h1 className="max-w-4xl text-4xl font-semibold leading-[1.06] tracking-tight text-foreground sm:text-5xl lg:text-[64px]">
-            {t(lang, 'hero.greeting')} {siteConfig.name}
-          </h1>
-          <p className="max-w-3xl text-base leading-8 text-foreground/70 sm:text-lg">
-            {siteConfig.tagline[lang]}
-            <br />
-            {siteConfig.description[lang]}
-          </p>
+        <h1 className="max-w-4xl text-3xl font-semibold leading-tight tracking-tight text-foreground sm:text-4xl lg:text-5xl">
+          {t(lang, 'hero.positioning')}
+        </h1>
+
+        <div className="flex flex-wrap gap-3">
+          <a
+            href="#projects"
+            className="inline-flex items-center rounded-full bg-primary px-4 py-2 text-sm font-medium text-background transition-opacity duration-200 hover:opacity-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+          >
+            {t(lang, 'hero.seeProjects')}
+          </a>
+          <a
+            href={followHref}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-2 text-sm font-medium text-foreground/80 transition-colors duration-200 hover:border-foreground/25 hover:bg-muted focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+          >
+            <XIcon className="h-3.5 w-3.5" />
+            {t(lang, 'hero.followX')}
+          </a>
         </div>
 
-        <p className="max-w-2xl text-sm leading-7 text-foreground/55">{t(lang, 'hero.description')}</p>
+        <p className="font-mono text-sm text-foreground/55">{stats.join(' · ')}</p>
       </div>
 
       <aside className="relative min-w-0 overflow-hidden rounded-2xl border border-border bg-card shadow-soft transition-transform duration-200 hover:-translate-y-0.5">
@@ -95,14 +124,6 @@ export function Hero() {
               </span>
             ))}
           </div>
-
-          <a
-            href="#projects"
-            className="group flex items-center gap-1.5 text-xs text-foreground/40 transition-colors duration-200 hover:text-foreground/70"
-          >
-            <span className="font-mono">{t(lang, 'hero.seeProjects')}</span>
-            <span className="transition-transform duration-200 group-hover:translate-x-0.5">→</span>
-          </a>
         </div>
       </aside>
     </div>

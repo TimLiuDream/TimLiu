@@ -11,6 +11,18 @@ export function Footer() {
       <div className="flex items-center gap-4">
         <span>© 2026 TimLiu</span>
         <a
+          href="/tools"
+          className="font-mono transition-colors duration-200 hover:text-foreground/70"
+        >
+          /tools
+        </a>
+        <a
+          href="/web3"
+          className="font-mono transition-colors duration-200 hover:text-foreground/70"
+        >
+          /web3
+        </a>
+        <a
           href="/now"
           className="font-mono transition-colors duration-200 hover:text-foreground/70"
         >
