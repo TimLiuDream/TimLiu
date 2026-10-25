@@ -176,7 +176,7 @@ Grok Bot 的 `url` 仍是空字符串。
 - `/llms-full.txt`：中英文完整介绍，包含个人背景、项目用途、近况及公开联系方式，无需执行 JavaScript。
 - 两个文本路由在构建时生成，共享 `lib/site-config.ts`、`data/` 和现有近况文案，不需要手工同步多份介绍。
 - 首页 head 提供文本 alternate，全站 head 提供 llms.txt discovery 链接；首页包含 ProfilePage 和项目结构化数据。
-- 主域名统一维护在 `siteConfig.url`，用于 canonical、metadata、JSON-LD、robots、sitemap、RSS 和 AI 文本链接。
+- 主域名默认是 `https://www.timliu.xyz`（可用 `NEXT_PUBLIC_SITE_URL` 覆盖），经 `siteConfig.url` 用于 canonical、metadata、JSON-LD、robots、sitemap、RSS 和 AI 文本链接。
 - robots 使用 `User-agent: * / Allow: /`，允许所有遵守 robots 的搜索、训练和用户触发 Agent；当前没有额外厂商白名单。
 
 部署和验证说明见 [doc/geo.md](doc/geo.md)。

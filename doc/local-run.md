@@ -30,6 +30,6 @@ npm run start
 ```
 
 ## 常见说明
-- 站点没有额外环境变量依赖。
+- 可选环境变量 `NEXT_PUBLIC_SITE_URL`：站点 origin，默认 `https://www.timliu.xyz`。本地不设置即可。
 - 主题切换状态会保存在浏览器 `localStorage`。
 - 暗色模式通过切换 `<html>` 上的 `dark` class 生效。

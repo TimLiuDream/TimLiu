@@ -1,6 +1,10 @@
+import { resolveSiteUrl } from '@/lib/site-url';
+
 export const siteConfig = {
   name: 'TimLiu',
-  url: 'https://tim-liu.vercel.app',
+  // Canonical origin for metadata, JSON-LD, sitemap, RSS, and agent text.
+  // Set NEXT_PUBLIC_SITE_URL to override. Defaults to https://www.timliu.xyz.
+  url: resolveSiteUrl(),
   title: 'TimLiu · 独立开发者 · AI Agent / Web3',
   summary: {
     zh: '独立开发者 Tim 的个人主页：用 AI Agent 做小工具，研究 Web3。项目包括 DesignDesk、SquareOps、ContentPolish、AlphaStrategy 与 Dreamer Labs。交流与合作首选 Telegram。',
