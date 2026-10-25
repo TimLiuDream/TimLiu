@@ -5,112 +5,108 @@ import type { Lang } from '@/lib/i18n';
 import { t } from '@/lib/i18n';
 import { useLang } from './lang-provider';
 
-const cardClassName =
-  'group block rounded-xl border border-border bg-card px-4 py-4 transition-all duration-200 hover:-translate-y-0.5 hover:border-foreground/25 hover:bg-muted';
-
 function liveLinks(project: Project): ProjectLink[] {
   return project.links.filter((link) => link.href.trim().length > 0);
-}
-
-function ProjectBody({
-  project,
-  lang,
-  showTodo,
-  showArrow,
-}: {
-  project: Project;
-  lang: Lang;
-  showTodo: boolean;
-  showArrow: boolean;
-}) {
-  return (
-    <>
-      {project.screenshot ? (
-        // Screenshots are optional paths from the data file, including future remote URLs.
-        // eslint-disable-next-line @next/next/no-img-element
-        <img
-          src={project.screenshot}
-          alt={lang === 'zh' ? `${project.name} 截图` : `${project.name} screenshot`}
-          className="mb-3 aspect-video w-full rounded-lg border border-border object-cover"
-        />
-      ) : null}
-      <div className="flex items-center gap-3">
-        <span className="font-mono text-sm font-medium text-foreground/90 group-hover:text-primary">
-          {project.name}
-        </span>
-        {showTodo ? (
-          <span className="rounded-full border border-border px-2 py-0.5 font-mono text-[10px] tracking-wide text-foreground/45">
-            {t(lang, 'tools.todo')}
-          </span>
-        ) : null}
-        {showArrow ? (
-          <span className="ml-auto text-foreground/30 transition-colors group-hover:text-foreground/60">↗</span>
-        ) : null}
-      </div>
-      <p className="mt-2 text-sm leading-6 text-foreground/70">{project.problem[lang]}</p>
-      {project.metric ? (
-        <p className="mt-2 font-mono text-xs text-foreground/55">{project.metric[lang]}</p>
-      ) : null}
-    </>
-  );
 }
 
 function linkLabel(link: ProjectLink, lang: Lang): string {
   return link.label?.[lang] ?? t(lang, 'projects.open');
 }
 
+function ProjectBody({
+  project,
+  lang,
+  index,
+  showTodo,
+  showArrow,
+  links,
+}: {
+  project: Project;
+  lang: Lang;
+  index: number;
+  showTodo: boolean;
+  showArrow: boolean;
+  links: ProjectLink[];
+}) {
+  return (
+    <>
+      <span className="project-index">{String(index).padStart(2, '0')}</span>
+      <div className="project-copy">
+        {project.screenshot ? (
+          // Screenshots are optional paths from the data file, including future remote URLs.
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            src={project.screenshot}
+            alt={lang === 'zh' ? `${project.name} 截图` : `${project.name} screenshot`}
+            className="project-shot"
+          />
+        ) : null}
+        <div className="project-name">
+          <h3>{project.name}</h3>
+          {showTodo ? <span className="todo">{t(lang, 'tools.todo')}</span> : null}
+        </div>
+        <p>{project.problem[lang]}</p>
+        {project.metric ? <p className="project-metric">{project.metric[lang]}</p> : null}
+        {links.length > 1 ? (
+          <div className="project-links">
+            {links.map((link) => (
+              <a key={link.href} className="quiet-link" href={link.href} target="_blank" rel="noopener noreferrer">
+                {linkLabel(link, lang)}
+              </a>
+            ))}
+          </div>
+        ) : null}
+      </div>
+      <span className="project-arrow" aria-hidden="true">
+        {showArrow ? '↗' : ''}
+      </span>
+    </>
+  );
+}
+
 export function ProjectsSection() {
   const { lang } = useLang();
 
   return (
-    <section id="projects" className="border-t border-border py-14">
-      <div className="grid gap-6 lg:grid-cols-[0.75fr_1.25fr] lg:gap-14">
-        <h2 className="text-2xl font-semibold tracking-tight">{t(lang, 'projects.title')}</h2>
-        <div className="space-y-4 text-foreground/75">
-          <p>{t(lang, 'projects.description')}</p>
-          <div className="grid gap-3">
-            {projects.map((project) => {
-              const links = liveLinks(project);
-
-              if (links.length === 1) {
-                return (
-                  <a
-                    key={project.id}
-                    id={project.id}
-                    href={links[0].href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={cardClassName}
-                  >
-                    <ProjectBody project={project} lang={lang} showTodo={false} showArrow />
-                  </a>
-                );
-              }
-
-              return (
-                <article key={project.id} id={project.id} className={cardClassName}>
-                  <ProjectBody project={project} lang={lang} showTodo={links.length === 0} showArrow={false} />
-                  {links.length > 1 ? (
-                    <div className="mt-3 flex flex-wrap gap-3 text-xs">
-                      {links.map((link) => (
-                        <a
-                          key={link.href}
-                          href={link.href}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-foreground/60 underline decoration-foreground/20 underline-offset-2 transition-colors hover:text-foreground"
-                        >
-                          {linkLabel(link, lang)}
-                        </a>
-                      ))}
-                    </div>
-                  ) : null}
-                </article>
-              );
-            })}
-          </div>
+    <section id="projects" className="chapter reveal">
+      <div className="chapter-layout">
+        <div className="chapter-kicker">
+          <span className="chapter-index">02</span>
+          <h2>{t(lang, 'projects.title')}</h2>
         </div>
+        <p className="chapter-intro measure">{t(lang, 'projects.description')}</p>
       </div>
+      <ol className="project-list">
+        {projects.map((project, index) => {
+          const links = liveLinks(project);
+          const body = (
+            <ProjectBody
+              project={project}
+              lang={lang}
+              index={index + 1}
+              showTodo={links.length === 0}
+              showArrow={links.length === 1}
+              links={links}
+            />
+          );
+
+          if (links.length === 1) {
+            return (
+              <li key={project.id} id={project.id}>
+                <a className="project" href={links[0].href} target="_blank" rel="noopener noreferrer">
+                  {body}
+                </a>
+              </li>
+            );
+          }
+
+          return (
+            <li key={project.id} id={project.id}>
+              <article className="project">{body}</article>
+            </li>
+          );
+        })}
+      </ol>
     </section>
   );
 }

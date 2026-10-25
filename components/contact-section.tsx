@@ -16,32 +16,27 @@ export function ContactSection() {
   const { lang } = useLang();
 
   return (
-    <section id="contact" className="border-t border-border py-14">
-      <div className="grid gap-6 lg:grid-cols-[0.75fr_1.25fr] lg:gap-14">
-        <h2 className="text-2xl font-semibold tracking-tight">{t(lang, 'contact.title')}</h2>
-        <div className="space-y-4 text-foreground/75">
-          <p>{t(lang, 'contact.description')}</p>
-          <div className="grid gap-3 sm:grid-cols-2">
+    <section id="contact" className="chapter reveal">
+      <div className="chapter-layout">
+        <div className="chapter-kicker">
+          <span className="chapter-index">03</span>
+          <h2>{t(lang, 'contact.title')}</h2>
+        </div>
+        <div>
+          <p className="chapter-intro measure">{t(lang, 'contact.description')}</p>
+          <div className="contact-grid">
             {siteConfig.contacts.map((contact) => {
               const Icon = iconMap[contact.label];
               const isPrimary = 'primary' in contact && contact.primary;
               const label = contact.label === 'WeChat' ? t(lang, 'contact.wechat') : contact.label;
-              const className = [
-                'flex min-w-0 items-center gap-3 rounded-xl border px-4 py-3',
-                isPrimary
-                  ? 'border-primary/30 bg-primary/10 text-primary'
-                  : 'border-border bg-card text-foreground/75',
-                'href' in contact
-                  ? 'transition-all duration-200 hover:-translate-y-0.5 hover:border-foreground/25 hover:bg-muted focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary'
-                  : '',
-              ].join(' ');
+              const className = isPrimary ? 'contact-card is-primary' : 'contact-card';
               const content = (
                 <>
-                  <Icon className="h-5 w-5 shrink-0" />
-                  <div className="min-w-0">
-                    <div className="text-xs font-medium">{label}</div>
-                    <div className="break-all text-sm">{contact.value}</div>
-                    {isPrimary && <div className="mt-1 text-xs">{t(lang, 'contact.preferred')}</div>}
+                  <Icon />
+                  <div>
+                    <div className="contact-label">{label}</div>
+                    <div className="contact-value">{contact.value}</div>
+                    {isPrimary ? <div className="contact-note">{t(lang, 'contact.preferred')}</div> : null}
                   </div>
                 </>
               );

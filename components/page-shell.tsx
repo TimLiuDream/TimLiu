@@ -2,15 +2,25 @@
 
 import { Footer } from '@/components/footer';
 import { Navbar } from '@/components/navbar';
+import { siteConfig } from '@/lib/site-config';
+import { useLang } from './lang-provider';
 
 export function PageShell({ children }: { children: React.ReactNode }) {
+  const { lang } = useLang();
+
   return (
-    <main className="min-h-screen bg-background text-foreground">
-      <section className="mx-auto flex min-h-screen w-full max-w-[calc(100vw-25px)] flex-col px-5 py-6 sm:px-6 lg:max-w-[calc(100vw-100px)] lg:px-10">
-        <Navbar />
+    <div className="site">
+      <a className="skip" href="#content">
+        {lang === 'zh' ? '跳到内容' : 'Skip to content'}
+      </a>
+      <Navbar />
+      <main id="content" className="site-main">
         {children}
-        <Footer />
-      </section>
-    </main>
+      </main>
+      <Footer />
+      <p className="spine" aria-hidden="true">
+        {siteConfig.tagline[lang]}
+      </p>
+    </div>
   );
 }
