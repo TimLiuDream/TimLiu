@@ -1,7 +1,5 @@
 import { ImageResponse } from 'next/og';
 
-export const runtime = 'edge';
-
 export async function GET() {
   return new ImageResponse(
     (
@@ -49,7 +47,7 @@ export async function GET() {
               marginTop: 20,
             }}
           >
-            Web3 撸空投 / Golang / 折腾 Side Project
+            用 AI Agent 做小工具，研究 Web3
           </div>
 
           {/* Code line */}
