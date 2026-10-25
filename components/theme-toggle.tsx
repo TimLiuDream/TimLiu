@@ -58,8 +58,7 @@ export function ThemeToggle() {
   const mounted = useMounted();
   const theme = useSyncExternalStore(subscribe, readTheme, getServerTheme);
 
-  const toggleTheme = () => {
-    const nextTheme = readTheme() === 'dark' ? 'light' : 'dark';
+  const commit = (nextTheme: Theme) => {
     const apply = () => {
       window.localStorage.setItem('theme', nextTheme);
       applyTheme(nextTheme);
@@ -71,21 +70,16 @@ export function ThemeToggle() {
     else apply();
   };
 
-  const label = mounted
-    ? theme === 'dark'
-      ? t(lang, 'themeToggle.dark')
-      : t(lang, 'themeToggle.light')
-    : t(lang, 'themeToggle.theme');
-
   return (
-    <button
-      type="button"
-      aria-label={t(lang, 'themeToggle.aria')}
-      onClick={toggleTheme}
-      className="icon-btn"
-    >
-      <span className="font-mono">{mounted ? (theme === 'dark' ? '☾' : '☀') : '◐'}</span>
-      <span>{label}</span>
-    </button>
+    <label className="theme-select">
+      <select
+        aria-label={t(lang, 'themeToggle.aria')}
+        value={mounted ? theme : 'light'}
+        onChange={(event) => commit(event.target.value === 'dark' ? 'dark' : 'light')}
+      >
+        <option value="light">{t(lang, 'themeToggle.light')}</option>
+        <option value="dark">{t(lang, 'themeToggle.dark')}</option>
+      </select>
+    </label>
   );
 }

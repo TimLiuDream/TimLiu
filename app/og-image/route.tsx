@@ -10,7 +10,7 @@ export async function GET() {
           display: 'flex',
           flexDirection: 'column',
           background: '#0d1117',
-          fontFamily: '"Inter", sans-serif',
+          fontFamily: 'sans-serif',
         }}
       >
         {/* Card */}

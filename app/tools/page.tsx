@@ -41,7 +41,15 @@ export default function ToolsPage() {
         ))}
       </div>
 
-      <div className="tool-grid">
+      {visible.length === 0 ? (
+        <div className="empty">
+          <p>{t(lang, 'tools.subtitle')}</p>
+          <button type="button" className="btn btn-primary" onClick={() => setCategory('all')}>
+            {t(lang, 'tools.all')}
+          </button>
+        </div>
+      ) : null}
+      <div className="tool-grid reveal">
         {visible.map((tool) => {
           const linked = tool.url.trim().length > 0;
           const body = (

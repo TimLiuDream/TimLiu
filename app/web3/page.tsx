@@ -30,7 +30,7 @@ export default function Web3Page() {
         {t(lang, 'web3.disclaimer')}
       </p>
 
-      <div className="ledger-wrap">
+      <div className="ledger-wrap reveal">
         <table className="ledger">
           <caption className="sr-only">{t(lang, 'web3.title')}</caption>
           <thead>

@@ -17,7 +17,6 @@ export default function Error({
       <span className="seal" aria-hidden="true">
         TL
       </span>
-      <div className="gate-code">!</div>
       <h1>{t(lang, 'error.title')}</h1>
       <p>{error.message || ''}</p>
       <button type="button" className="btn btn-primary" onClick={reset}>

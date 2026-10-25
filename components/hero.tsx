@@ -42,19 +42,20 @@ export function Hero({ githubStars }: { githubStars: number | null }) {
 
   return (
     <div className="hero">
-      <div className="hero-lead">
+      <div className="hero-col">
+        <div className="hero-lead">
         <p className="kicker rise d1">
           <span className="mark-sq" aria-hidden="true" />
           {t(lang, 'hero.badge')}
         </p>
-        <h1 className="display-title rise d2">{t(lang, 'hero.positioning')}</h1>
-      </div>
-      <div className="hero-copy">
+          <h1 className="display-title rise d2">{t(lang, 'hero.positioning')}</h1>
+        </div>
+        <div className="hero-copy">
         <div className="hero-actions rise d3">
           <a className="btn btn-primary" href="#projects">
             {t(lang, 'hero.seeProjects')}
           </a>
-          <a className="btn btn-ghost" href={followHref} target="_blank" rel="noopener noreferrer">
+          <a className="btn btn-text" href={followHref} target="_blank" rel="noopener noreferrer">
             <XIcon />
             {t(lang, 'hero.followX')}
           </a>
@@ -76,6 +77,7 @@ export function Hero({ githubStars }: { githubStars: number | null }) {
               <span>{t(lang, 'hero.statFollowers')}</span>
             </div>
           ) : null}
+        </div>
         </div>
       </div>
 

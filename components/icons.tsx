@@ -28,7 +28,7 @@ export function XIcon(props: React.SVGProps<SVGSVGElement>) {
 export function WeChatIcon(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" {...props}>
-      <path d="M20 11.5a8 8 0 0 1-8 8 9 9 0 0 1-3.5-.7L4 20l1.2-4A8 8 0 1 1 20 11.5Z" stroke="currentColor" strokeWidth="1.7" strokeLinejoin="round" />
+      <path d="M20 11.5a8 8 0 0 1-8 8 9 9 0 0 1-3.5-.7L4 20l1.2-4A8 8 0 1 1 20 11.5Z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" />
       <circle cx="9" cy="11" r="1" fill="currentColor" />
       <circle cx="15" cy="11" r="1" fill="currentColor" />
     </svg>

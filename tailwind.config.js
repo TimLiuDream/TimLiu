@@ -19,18 +19,11 @@ module.exports = {
         'accent-foreground': 'var(--foreground)',
       },
       fontFamily: {
-        sans: ['var(--font-sans)', 'PingFang SC', 'Hiragino Sans GB', 'Noto Sans SC', 'Microsoft YaHei', 'sans-serif'],
-        mono: ['var(--font-mono)', 'ui-monospace', 'SFMono-Regular', 'monospace'],
-        display: ['var(--font-display)', 'Georgia', 'serif'],
+        sans: ['var(--font-sans)', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'sans-serif'],
+        mono: ['var(--font-mono)', 'ui-monospace', 'monospace'],
       },
-      borderRadius: {
-        xl: '0.75rem',
-      },
-      boxShadow: {
-        soft: '0 1px 2px rgba(0,0,0,0.04)',
-      },
-      transitionDuration: {
-        200: '200ms',
+      transitionTimingFunction: {
+        premium: 'cubic-bezier(0.32, 0.72, 0, 1)',
       },
     },
   },

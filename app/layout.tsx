@@ -1,31 +1,22 @@
 import type { Metadata } from 'next';
-import { Fraunces, IBM_Plex_Mono, Instrument_Sans } from 'next/font/google';
+import { Geist, Geist_Mono } from 'next/font/google';
 import { Analytics } from '@vercel/analytics/react';
 import { LangProvider } from '@/components/lang-provider';
 import { siteMetadata } from '@/lib/site-metadata';
 import { serializeStructuredData, siteStructuredData } from '@/lib/structured-data';
 import './globals.css';
 
-const sans = Instrument_Sans({
+const sans = Geist({
   subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
+  weight: 'variable',
   variable: '--font-sans',
   display: 'swap',
   adjustFontFallback: true,
 });
 
-const display = Fraunces({
+const mono = Geist_Mono({
   subsets: ['latin'],
-  weight: ['500', '600'],
-  style: ['normal', 'italic'],
-  variable: '--font-display',
-  display: 'swap',
-  adjustFontFallback: true,
-});
-
-const mono = IBM_Plex_Mono({
-  subsets: ['latin'],
-  weight: ['400', '500'],
+  weight: 'variable',
   variable: '--font-mono',
   display: 'swap',
   adjustFontFallback: true,
@@ -44,13 +35,13 @@ export default function RootLayout({
       <head>
         <link rel="describedby" href="/llms.txt" type="text/plain" />
       </head>
-      <body className={`${sans.variable} ${display.variable} ${mono.variable}`}>
+      <body className={`${sans.variable} ${mono.variable}`}>
         <script
           dangerouslySetInnerHTML={{
             __html: '(function(){try{var t=localStorage.getItem("theme");var d=document.documentElement;if(t==="dark"||(!t&&window.matchMedia("(prefers-color-scheme: dark)").matches)){d.classList.add("dark");d.style.colorScheme="dark"}else{d.style.colorScheme="light"}}catch(e){}})()',
           }}
         />
-        <div className="atmosphere" aria-hidden="true" />
+        <div className="grain" aria-hidden="true" />
         <LangProvider>{children}</LangProvider>
         <Analytics />
         <script
