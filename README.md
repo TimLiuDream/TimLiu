@@ -115,7 +115,8 @@ npm run dev
   部署地址：https://square.timliu.xyz
 - **ContentPolish** — 内容打磨工具
   部署地址：https://content-polish.vercel.app/
-- **Dreamer Labs** — Codex / AI 订阅充值小站。正式 URL 还是 TODO，见 `data/projects.ts`。
+- **Dreamer Labs** — Codex / AI 订阅充值小站。
+  部署地址：https://dreamlab.timliu.xyz/
 
 ## 更新数据
 
@@ -131,8 +132,6 @@ npm run dev
 | `screenshot` | 可选。`public/` 下的路径，例如 `/projects/designdesk.png`。没有就不要填 |
 | `links` | 外链数组。`href` 为空或整段删掉时，卡片不渲染链接，并标 TODO |
 | `details` | 可选的较长介绍，只进 `llms.txt` 和结构化数据，卡片不显示 |
-
-Dreamer Labs（充值小站）的 `links` 仍是空数组，等正式 URL。
 
 ### 工具 `data/tools.ts`
 
@@ -160,7 +159,7 @@ Grok Bot 的 `url` 仍是空字符串。
 
 ### 首页数字
 
-- 项目个数来自 `data/projects.ts` 的条数，包含还没有 URL 的 Dreamer Labs。
+- 项目个数来自 `data/projects.ts` 的条数。
 - GitHub Stars 在构建和之后每小时向 `https://api.github.com/users/TimLiuDream/repos` 拉取，加总公开、非 fork 仓库的 star。失败就隐藏，不要手填。
 - X 关注数没有免密钥的公开接口。要显示时，把 `lib/site-config.ts` 里的 `xFollowerCount` 设成真实数字；保持 `null` 则首页不显示。不要填估计值。
 
