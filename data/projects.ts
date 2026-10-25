@@ -85,7 +85,6 @@ export const projects: Project[] = [
       zh: 'Codex / AI 订阅充值小站，不用折腾海外卡就能用上',
       en: 'A top-up shop for Codex and other AI subscriptions, so you can use them without an overseas card.',
     },
-    // TODO: 填上 Dreamer Labs（充值小站）的正式 URL。留空时卡片不渲染外链。
-    links: [],
+    links: [{ href: 'https://dreamlab.timliu.xyz/' }],
   },
 ];
