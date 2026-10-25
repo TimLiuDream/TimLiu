@@ -1,6 +1,10 @@
+import { resolveSiteUrl } from '@/lib/site-url';
+
 export const siteConfig = {
   name: 'TimLiu',
-  url: 'https://tim-liu.vercel.app',
+  // Canonical origin for metadata, JSON-LD, sitemap, RSS, and agent text.
+  // Set NEXT_PUBLIC_SITE_URL to override. Defaults to https://www.timliu.xyz.
+  url: resolveSiteUrl(),
   title: 'TimLiu · Golang / Web3 / Side Projects',
   summary: {
     zh: 'TimLiu 的个人主页：使用 Golang 开发工具与 Side Project，参与 Web3 空投和测试网交互，维护 DesignDesk、SquareOps、ContentPolish 与 AlphaStrategy。交流与合作首选 Telegram。',

@@ -10,7 +10,9 @@
 
 ## 域名和部署
 
-主域名目前沿用 https://tim-liu.vercel.app。若生产使用其他主域名，先修改 lib/site-config.ts 的 url，再重新构建部署。
+主域名默认是 https://www.timliu.xyz。`lib/site-url.ts` 的 `resolveSiteUrl()` 写入 `siteConfig.url`，canonical、Open Graph、JSON-LD、robots、sitemap、RSS 和 AI 文本链接都读这个地址。需要其他 origin 时设置 `NEXT_PUBLIC_SITE_URL`（只写 origin，例如 `https://www.timliu.xyz`），然后重新构建部署。
+
+`tim-liu.vercel.app` 和裸域 `timliu.xyz` 会 308 到该主域名，并保留路径和查询参数。Vercel 预览域名（形如 `tim-liu-git-<branch>-<scope>.vercel.app`）不会跳转。
 
 发布后检查 /llms.txt、/llms-full.txt、/robots.txt、/sitemap.xml、/feed.xml 是否返回 200。检查首页与 /now 的 canonical 分别指向正确页面。
 
