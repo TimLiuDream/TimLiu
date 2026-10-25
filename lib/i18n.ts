@@ -5,7 +5,7 @@ export type LocalizedText = { zh: string; en: string };
 export const translations = {
   zh: {
     hero: {
-      badge: 'GITHUB STYLE · 极简个人主页',
+      badge: '现场笔记',
       positioning: '独立开发者 Tim｜用 AI Agent 做小工具，研究 Web3',
       subtitle: 'AI Agent 小工具 / Web3',
       geekMode: 'geek mode',
@@ -104,7 +104,7 @@ export const translations = {
   },
   en: {
     hero: {
-      badge: 'GITHUB STYLE · MINIMAL PERSONAL HOMEPAGE',
+      badge: 'Field notes',
       positioning: 'Independent developer Tim | Building small tools with AI agents, researching Web3',
       subtitle: 'AI agent tools / Web3',
       geekMode: 'geek mode',

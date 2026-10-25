@@ -9,14 +9,19 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        border: 'hsl(var(--border))',
-        background: 'hsl(var(--background))',
-        foreground: 'hsl(var(--foreground))',
-        primary: 'hsl(var(--primary))',
-        card: 'hsl(var(--card))',
-        muted: 'hsl(var(--muted))',
-        accent: 'hsl(var(--accent))',
-        'accent-foreground': 'hsl(var(--accent-foreground))',
+        border: 'var(--border)',
+        background: 'var(--background)',
+        foreground: 'var(--foreground)',
+        primary: 'var(--primary)',
+        card: 'var(--card)',
+        muted: 'var(--chip)',
+        accent: 'var(--chip)',
+        'accent-foreground': 'var(--foreground)',
+      },
+      fontFamily: {
+        sans: ['var(--font-sans)', 'PingFang SC', 'Hiragino Sans GB', 'Noto Sans SC', 'Microsoft YaHei', 'sans-serif'],
+        mono: ['var(--font-mono)', 'ui-monospace', 'SFMono-Regular', 'monospace'],
+        display: ['var(--font-display)', 'Georgia', 'serif'],
       },
       borderRadius: {
         xl: '0.75rem',

@@ -20,26 +20,24 @@ export function Navbar() {
   const pathname = usePathname();
 
   return (
-    <header className="flex flex-wrap items-center justify-between gap-4 border-b border-border pb-4 text-sm sm:pb-5">
-      <Link href="/" className="text-foreground/90">
-        <div className="font-mono text-[13px] tracking-[0.24em] transition-colors duration-200 hover:text-primary sm:text-sm">
-          TimLiu
-        </div>
-        <div className="mt-1 text-[11px] leading-none text-foreground/45 sm:text-xs">{siteConfig.tagline[lang]}</div>
-      </Link>
-      <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
-        <nav className="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-foreground/55">
+    <header className="nav">
+      <div className="nav-inner">
+        <Link href="/" className="brand">
+          <span className="seal" aria-hidden="true">
+            TL
+          </span>
+          <span className="brand-text">
+            <span className="brand-name">TimLiu</span>
+            <span className="brand-tag">{siteConfig.tagline[lang]}</span>
+          </span>
+        </Link>
+        <nav className="nav-links" aria-label={lang === 'zh' ? '页面' : 'Pages'}>
           {links.map((link) => {
             const active = link.href === pathname;
             return (
               <Link
                 key={link.href}
                 href={link.href}
-                className={
-                  active
-                    ? 'text-foreground'
-                    : 'transition-colors duration-200 hover:text-foreground/80'
-                }
                 aria-current={active ? 'page' : undefined}
               >
                 {t(lang, link.key)}
@@ -47,8 +45,10 @@ export function Navbar() {
             );
           })}
         </nav>
-        <LangToggle />
-        <ThemeToggle />
+        <div className="nav-actions">
+          <LangToggle />
+          <ThemeToggle />
+        </div>
       </div>
     </header>
   );

@@ -8,15 +8,21 @@ export function AboutSection() {
   const { lang } = useLang();
 
   return (
-    <section id="about" className="border-t border-border py-14">
-      <div className="grid gap-6 lg:grid-cols-[0.75fr_1.25fr] lg:gap-14">
-        <h2 className="text-2xl font-semibold tracking-tight">{t(lang, 'about.title')}</h2>
-        <div className="space-y-4 leading-8 text-foreground/75">
+    <section id="about" className="chapter reveal">
+      <div className="chapter-layout">
+        <div className="chapter-kicker">
+          <span className="chapter-index">01</span>
+          <h2>{t(lang, 'about.title')}</h2>
+        </div>
+        <div className="chapter-body measure">
           <p>{siteConfig.about[lang]}</p>
-          <div className="rounded-xl border border-border bg-card px-4 py-3 font-mono text-sm text-foreground/70">
-            &gt; {t(lang, 'about.stillTinkering')}
-            <span className="animate-cursor-blink">_</span>
-          </div>
+          <p className="terminal-line">
+            <span className="prompt">&gt; </span>
+            {t(lang, 'about.stillTinkering')}
+            <span className="caret" aria-hidden="true">
+              _
+            </span>
+          </p>
         </div>
       </div>
     </section>

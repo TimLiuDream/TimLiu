@@ -60,9 +60,15 @@ export function ThemeToggle() {
 
   const toggleTheme = () => {
     const nextTheme = readTheme() === 'dark' ? 'light' : 'dark';
-    window.localStorage.setItem('theme', nextTheme);
-    applyTheme(nextTheme);
-    emit();
+    const apply = () => {
+      window.localStorage.setItem('theme', nextTheme);
+      applyTheme(nextTheme);
+      emit();
+    };
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const start = (document as Document & { startViewTransition?: (cb: () => void) => void }).startViewTransition;
+    if (!reduce && typeof start === 'function') start.call(document, apply);
+    else apply();
   };
 
   const label = mounted
@@ -76,7 +82,7 @@ export function ThemeToggle() {
       type="button"
       aria-label={t(lang, 'themeToggle.aria')}
       onClick={toggleTheme}
-      className="inline-flex items-center gap-2 rounded-xl border border-border bg-card px-3 py-2 text-xs text-foreground/70 transition-all duration-200 hover:-translate-y-0.5 hover:border-foreground/25 hover:text-foreground"
+      className="icon-btn"
     >
       <span className="font-mono">{mounted ? (theme === 'dark' ? '☾' : '☀') : '◐'}</span>
       <span>{label}</span>

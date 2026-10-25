@@ -20,62 +20,59 @@ export default function Web3Page() {
 
   return (
     <PageShell>
-      <div className="py-14">
-        <h1 className="text-2xl font-semibold tracking-tight">{t(lang, 'web3.title')}</h1>
-        <p className="mt-3 max-w-2xl text-sm leading-7 text-foreground/60">{t(lang, 'web3.subtitle')}</p>
-        <p className="mt-6 max-w-3xl rounded-xl border border-border bg-card px-4 py-3 text-sm leading-7 text-foreground/75">
-          <span className="font-mono text-foreground/45">&gt; </span>
-          {t(lang, 'web3.disclaimer')}
-        </p>
+      <header className="page-hero rise">
+        <p className="eyebrow">/web3</p>
+        <h1>{t(lang, 'web3.title')}</h1>
+        <p>{t(lang, 'web3.subtitle')}</p>
+      </header>
+      <p className="callout">
+        <span className="prompt">&gt; </span>
+        {t(lang, 'web3.disclaimer')}
+      </p>
 
-        <div className="mt-6 overflow-x-auto rounded-xl border border-border">
-          <table className="w-full min-w-[760px] border-collapse text-left text-sm">
-            <thead className="bg-card text-[11px] uppercase tracking-[0.14em] text-foreground/45">
-              <tr>
-                <th scope="col" className="px-4 py-3 font-medium">{t(lang, 'web3.project')}</th>
-                <th scope="col" className="px-4 py-3 font-medium">{t(lang, 'web3.cost')}</th>
-                <th scope="col" className="px-4 py-3 font-medium">{t(lang, 'web3.type')}</th>
-                <th scope="col" className="px-4 py-3 font-medium">{t(lang, 'web3.status')}</th>
-                <th scope="col" className="px-4 py-3 font-medium">{t(lang, 'web3.note')}</th>
-                <th scope="col" className="px-4 py-3 font-medium">{t(lang, 'web3.updated')}</th>
-              </tr>
-            </thead>
-            <tbody>
-              {web3Entries.map((entry) => {
-                const linked = entry.url.trim().length > 0;
-                return (
-                  <tr key={entry.name} className="border-t border-border align-top">
-                    <th scope="row" className="px-4 py-3 font-medium text-foreground/90">
-                      {linked ? (
-                        <a
-                          href={entry.url}
-                          target="_blank"
-                          rel="nofollow noopener"
-                          className="transition-colors hover:text-primary"
-                        >
-                          {entry.name}
-                          <span className="ml-1 text-foreground/30">↗</span>
-                        </a>
-                      ) : (
-                        <span>
-                          {entry.name}
-                          <span className="ml-2 font-mono text-[10px] tracking-wide text-foreground/45">
-                            {t(lang, 'web3.todo')}
-                          </span>
-                        </span>
-                      )}
-                    </th>
-                    <td className="px-4 py-3 text-foreground/70">{costLabel(entry.cost, lang)}</td>
-                    <td className="px-4 py-3 text-foreground/70">{typeLabel(entry.type, lang)}</td>
-                    <td className="px-4 py-3 text-foreground/70">{entry.status[lang]}</td>
-                    <td className="px-4 py-3 text-foreground/60">{entry.note[lang]}</td>
-                    <td className="px-4 py-3 font-mono text-xs text-foreground/50">{entry.updated}</td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
-        </div>
+      <div className="ledger-wrap">
+        <table className="ledger">
+          <caption className="sr-only">{t(lang, 'web3.title')}</caption>
+          <thead>
+            <tr>
+              <th scope="col">{t(lang, 'web3.project')}</th>
+              <th scope="col">{t(lang, 'web3.cost')}</th>
+              <th scope="col">{t(lang, 'web3.type')}</th>
+              <th scope="col">{t(lang, 'web3.status')}</th>
+              <th scope="col">{t(lang, 'web3.note')}</th>
+              <th scope="col">{t(lang, 'web3.updated')}</th>
+            </tr>
+          </thead>
+          <tbody>
+            {web3Entries.map((entry) => {
+              const linked = entry.url.trim().length > 0;
+              const cost = costLabel(entry.cost, lang);
+              return (
+                <tr key={entry.name}>
+                  <th scope="row" data-label={t(lang, 'web3.project')}>
+                    {linked ? (
+                      <a href={entry.url} target="_blank" rel="nofollow noopener">
+                        {entry.name}
+                        <span aria-hidden="true"> ↗</span>
+                      </a>
+                    ) : (
+                      <span>
+                        {entry.name} <span className="todo">{t(lang, 'web3.todo')}</span>
+                      </span>
+                    )}
+                  </th>
+                  <td data-label={t(lang, 'web3.cost')}>
+                    <span className={entry.cost === 'paid' ? 'pill pill-paid' : 'pill'}>{cost}</span>
+                  </td>
+                  <td data-label={t(lang, 'web3.type')}>{typeLabel(entry.type, lang)}</td>
+                  <td data-label={t(lang, 'web3.status')}>{entry.status[lang]}</td>
+                  <td data-label={t(lang, 'web3.note')}>{entry.note[lang]}</td>
+                  <td data-label={t(lang, 'web3.updated')}>{entry.updated}</td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
       </div>
     </PageShell>
   );
