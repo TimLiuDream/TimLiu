@@ -7,8 +7,8 @@ export const siteConfig = {
   url: resolveSiteUrl(),
   title: 'TimLiu · 独立开发者 · AI Agent / Web3',
   summary: {
-    zh: '独立开发者 Tim 的个人主页：用 AI Agent 做小工具，研究 Web3。项目包括 DesignDesk、SquareOps、ContentPolish、AlphaStrategy 与 Dreamer Labs。交流与合作首选 Telegram。',
-    en: 'Personal site of Tim, an independent developer who builds small tools with AI agents and researches Web3. Projects include DesignDesk, SquareOps, ContentPolish, AlphaStrategy, and Dreamer Labs. Telegram is the preferred contact for ideas and collaboration.',
+    zh: '独立开发者 Tim 的个人主页：用 AI Agent 做小工具，研究 Web3。项目包括 DesignDesk、AlphaStrategy、ContentPolish 与 Dreamer Labs。交流与合作首选 Telegram。',
+    en: 'Personal site of Tim, an independent developer who builds small tools with AI agents and researches Web3. Projects include DesignDesk, AlphaStrategy, ContentPolish, and Dreamer Labs. Telegram is the preferred contact for ideas and collaboration.',
   },
   tagline: {
     zh: 'AI Agent 小工具 · Web3',

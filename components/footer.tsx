@@ -11,13 +11,14 @@ export function Footer() {
     <footer className="site-footer">
       <div className="footer-inner">
         <div className="footer-links">
-          <span>© 2026 TimLiu</span>
+          <span className="footer-copy">© 2026 TimLiu</span>
           <Link href="/tools">/tools</Link>
           <Link href="/web3">/web3</Link>
           <Link href="/now">/now</Link>
           <a href="/feed.xml">RSS</a>
+          <a href="/llms.txt">llms.txt</a>
         </div>
-        <span>{t(lang, 'footer.builtWith')}</span>
+        <span className="footer-motto">{t(lang, 'footer.builtWith')}</span>
       </div>
     </footer>
   );

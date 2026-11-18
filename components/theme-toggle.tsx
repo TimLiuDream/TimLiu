@@ -11,11 +11,12 @@ const listeners = new Set<() => void>();
 function readTheme(): Theme {
   try {
     const stored = window.localStorage.getItem('theme');
-    if (stored === 'dark' || stored === 'light') return stored;
+    if (stored === 'light') return 'light';
+    if (stored === 'dark') return 'dark';
   } catch {
-    return 'light';
+    return 'dark';
   }
-  return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  return 'dark';
 }
 
 function applyTheme(theme: Theme) {
@@ -32,24 +33,10 @@ function subscribe(listener: () => void) {
       listener();
     }
   };
-  const media = window.matchMedia('(prefers-color-scheme: dark)');
-  const onMediaChange = () => {
-    try {
-      const stored = window.localStorage.getItem('theme');
-      if (stored !== 'dark' && stored !== 'light') {
-        applyTheme(readTheme());
-        listener();
-      }
-    } catch {
-      // Ignore storage errors in restricted environments.
-    }
-  };
   window.addEventListener('storage', onStorage);
-  media.addEventListener('change', onMediaChange);
   return () => {
     listeners.delete(listener);
     window.removeEventListener('storage', onStorage);
-    media.removeEventListener('change', onMediaChange);
   };
 }
 
@@ -70,7 +57,7 @@ function getMountedServerSnapshot() {
 }
 
 function getServerTheme(): Theme {
-  return 'light';
+  return 'dark';
 }
 
 function useMounted() {

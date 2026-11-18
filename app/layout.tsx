@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Fraunces, IBM_Plex_Mono, Instrument_Sans } from 'next/font/google';
+import { IBM_Plex_Mono, Instrument_Sans } from 'next/font/google';
 import { Analytics } from '@vercel/analytics/react';
 import { LangProvider } from '@/components/lang-provider';
 import { siteMetadata } from '@/lib/site-metadata';
@@ -10,15 +10,6 @@ const sans = Instrument_Sans({
   subsets: ['latin'],
   weight: ['400', '500', '600', '700'],
   variable: '--font-sans',
-  display: 'swap',
-  adjustFontFallback: true,
-});
-
-const display = Fraunces({
-  subsets: ['latin'],
-  weight: ['500', '600'],
-  style: ['normal', 'italic'],
-  variable: '--font-display',
   display: 'swap',
   adjustFontFallback: true,
 });
@@ -44,10 +35,10 @@ export default function RootLayout({
       <head>
         <link rel="describedby" href="/llms.txt" type="text/plain" />
       </head>
-      <body className={`${sans.variable} ${display.variable} ${mono.variable}`}>
+      <body className={`${sans.variable} ${mono.variable}`}>
         <script
           dangerouslySetInnerHTML={{
-            __html: '(function(){try{var d=document.documentElement;var t=localStorage.getItem("theme");if(t==="dark"||(!t&&window.matchMedia("(prefers-color-scheme: dark)").matches)){d.classList.add("dark");d.style.colorScheme="dark"}else{d.style.colorScheme="light"}var l=localStorage.getItem("lang");d.lang=l==="en"?"en":"zh-CN"}catch(e){}})()',
+            __html: '(function(){try{var d=document.documentElement;var t=localStorage.getItem("theme");if(t==="light"){d.classList.remove("dark");d.style.colorScheme="light"}else{d.classList.add("dark");d.style.colorScheme="dark"}var l=localStorage.getItem("lang");d.lang=l==="en"?"en":"zh-CN"}catch(e){}})()',
           }}
         />
         <div className="atmosphere" aria-hidden="true" />

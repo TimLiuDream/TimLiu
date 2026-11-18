@@ -62,7 +62,7 @@ export default function Web3Page() {
                     )}
                   </th>
                   <td data-label={t(lang, 'web3.cost')}>
-                    <span className={entry.cost === 'paid' ? 'pill pill-paid' : 'pill'}>{cost}</span>
+                    <span className={`pill pill-${entry.cost}`}>{cost}</span>
                   </td>
                   <td data-label={t(lang, 'web3.type')}>{typeLabel(entry.type, lang)}</td>
                   <td data-label={t(lang, 'web3.status')}>{entry.status[lang]}</td>

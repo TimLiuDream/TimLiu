@@ -13,53 +13,80 @@ function linkLabel(link: ProjectLink, lang: Lang): string {
   return link.label?.[lang] ?? t(lang, 'projects.open');
 }
 
-function ProjectBody({
+function extractHost(href: string): string {
+  try {
+    return new URL(href).hostname.replace(/^www\./, '');
+  } catch {
+    return href;
+  }
+}
+
+function ProjectCardInner({
   project,
   lang,
   index,
-  showTodo,
-  showArrow,
   links,
 }: {
   project: Project;
   lang: Lang;
   index: number;
-  showTodo: boolean;
-  showArrow: boolean;
   links: ProjectLink[];
 }) {
+  const primaryHref = links[0]?.href;
+  const host = primaryHref ? extractHost(primaryHref) : null;
+
   return (
     <>
-      <span className="project-index">{String(index).padStart(2, '0')}</span>
-      <div className="project-copy">
-        {project.screenshot ? (
-          // Screenshots are optional paths from the data file, including future remote URLs.
-          // eslint-disable-next-line @next/next/no-img-element
-          <img
-            src={project.screenshot}
-            alt={lang === 'zh' ? `${project.name} 截图` : `${project.name} screenshot`}
-            className="project-shot"
-          />
-        ) : null}
-        <div className="project-name">
-          <h3>{project.name}</h3>
-          {showTodo ? <span className="todo">{t(lang, 'tools.todo')}</span> : null}
+      {project.screenshot ? (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img
+          src={project.screenshot}
+          alt={lang === 'zh' ? `${project.name} 截图` : `${project.name} screenshot`}
+          className="project-shot"
+        />
+      ) : null}
+
+      <div className="project-card-top">
+        <div className="project-badges">
+          <span className="project-index">{String(index).padStart(2, '0')}</span>
+          {project.tag ? <span className="project-tag">{project.tag[lang]}</span> : null}
         </div>
+        {links.length === 0 ? (
+          <span className="todo">{t(lang, 'tools.todo')}</span>
+        ) : (
+          <span className="project-live">
+            <span className="project-live-dot" aria-hidden="true" />
+            {t(lang, 'projects.live')}
+          </span>
+        )}
+      </div>
+
+      <div className="project-card-body">
+        <h3>{project.name}</h3>
         <p>{project.problem[lang]}</p>
         {project.metric ? <p className="project-metric">{project.metric[lang]}</p> : null}
-        {links.length > 1 ? (
+      </div>
+
+      <div className="project-card-foot">
+        {links.length === 1 && host ? (
+          <>
+            <span className="project-host">{host}</span>
+            <span className="project-arrow" aria-hidden="true">
+              ↗
+            </span>
+          </>
+        ) : links.length > 1 ? (
           <div className="project-links">
             {links.map((link) => (
               <a key={link.href} className="quiet-link" href={link.href} target="_blank" rel="noopener noreferrer">
-                {linkLabel(link, lang)}
+                {linkLabel(link, lang)} ↗
               </a>
             ))}
           </div>
-        ) : null}
+        ) : (
+          <span className="project-host">{t(lang, 'tools.todo')}</span>
+        )}
       </div>
-      <span className="project-arrow" aria-hidden="true">
-        {showArrow ? '↗' : ''}
-      </span>
     </>
   );
 }
@@ -69,32 +96,31 @@ export function ProjectsSection() {
 
   return (
     <section id="projects" className="chapter reveal">
-      <div className="chapter-layout">
-        <div className="chapter-kicker">
-          <span className="chapter-index">02</span>
+      <div className="section-header">
+        <div>
+          <p className="eyebrow">01 // {t(lang, 'projects.eyebrow')}</p>
           <h2>{t(lang, 'projects.title')}</h2>
         </div>
-        <p className="chapter-intro measure">{t(lang, 'projects.description')}</p>
+        <p className="section-sub">{t(lang, 'projects.description')}</p>
       </div>
-      <ol className="project-list">
+
+      <ol className="project-bento">
         {projects.map((project, index) => {
           const links = liveLinks(project);
-          const body = (
-            <ProjectBody
-              project={project}
-              lang={lang}
-              index={index + 1}
-              showTodo={links.length === 0}
-              showArrow={links.length === 1}
-              links={links}
-            />
+          const inner = (
+            <ProjectCardInner project={project} lang={lang} index={index + 1} links={links} />
           );
 
           if (links.length === 1) {
             return (
               <li key={project.id} id={project.id}>
-                <a className="project" href={links[0].href} target="_blank" rel="noopener noreferrer">
-                  {body}
+                <a
+                  className="project-card"
+                  href={links[0].href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {inner}
                 </a>
               </li>
             );
@@ -102,7 +128,7 @@ export function ProjectsSection() {
 
           return (
             <li key={project.id} id={project.id}>
-              <article className="project">{body}</article>
+              <article className="project-card is-static">{inner}</article>
             </li>
           );
         })}

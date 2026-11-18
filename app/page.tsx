@@ -27,8 +27,8 @@ export default async function Home() {
         dangerouslySetInnerHTML={{ __html: serializeStructuredData(homeStructuredData) }}
       />
       <Hero githubStars={githubStars} />
-      <AboutSection />
       <ProjectsSection />
+      <AboutSection />
       <ContactSection />
     </PageShell>
   );

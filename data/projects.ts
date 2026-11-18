@@ -8,6 +8,7 @@ export type ProjectLink = {
 export type Project = {
   id: string;
   name: string;
+  tag?: LocalizedText;
   problem: LocalizedText;
   /** Longer copy for llms.txt and structured data. The card does not render it. */
   details?: LocalizedText;
@@ -27,6 +28,7 @@ export const projects: Project[] = [
   {
     id: 'design-desk',
     name: 'DesignDesk',
+    tag: { zh: 'AI 视觉工作台', en: 'AI Design Studio' },
     problem: {
       zh: '不会设计也能 1 分钟出封面和商品图，生成、抠图、换背景、扩图都在一个工作台里',
       en: 'Covers and product images in about a minute, even if you do not design. Generate, cut out, replace the background, and outpaint in one workspace.',
@@ -41,6 +43,7 @@ export const projects: Project[] = [
   {
     id: 'alpha-strategy',
     name: 'AlphaStrategy',
+    tag: { zh: 'Web3 策略回测', en: 'Quant Backtester' },
     problem: {
       zh: '币安 Alpha 空投领完是卖还是拿？用历史数据回测 4 种策略告诉你答案',
       en: 'Sell or hold a Binance Alpha airdrop? Backtest four strategies on historical data and get an answer.',
@@ -53,21 +56,9 @@ export const projects: Project[] = [
     applicationCategory: 'FinanceApplication',
   },
   {
-    id: 'squareops',
-    name: 'SquareOps',
-    problem: {
-      zh: '币安广场创作者的内容流水线，活动雷达、选题、写作、发布一条龙',
-      en: 'A content pipeline for Binance Square creators: activity radar, topics, writing, and publishing in one flow.',
-    },
-    details: {
-      zh: '面向币安广场内容创作者，将活动雷达、材料评分、选题、写作与发布串成内容工作流。',
-      en: 'A content workflow for Binance Square creators, covering activity discovery, source scoring, topic selection, writing, and publishing.',
-    },
-    links: [{ href: 'https://square.timliu.xyz' }],
-  },
-  {
     id: 'content-polish',
     name: 'ContentPolish',
+    tag: { zh: '多平台内容排版', en: 'Creator Workflow' },
     problem: {
       zh: '多平台排版 + AI 润色，一键把文案排成公众号/小红书/知乎/推特格式',
       en: 'Multi-platform layout plus AI polish. Turn copy into WeChat, Xiaohongshu, Zhihu, or Twitter format in one step.',
@@ -81,6 +72,7 @@ export const projects: Project[] = [
   {
     id: 'dreamer-labs',
     name: 'Dreamer Labs',
+    tag: { zh: 'AI 订阅服务', en: 'AI Subscriptions' },
     problem: {
       zh: 'Codex / AI 订阅充值小站，不用折腾海外卡就能用上',
       en: 'A top-up shop for Codex and other AI subscriptions, so you can use them without an overseas card.',

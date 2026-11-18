@@ -2,7 +2,6 @@
 
 import { Footer } from '@/components/footer';
 import { Navbar } from '@/components/navbar';
-import { siteConfig } from '@/lib/site-config';
 import { useLang } from './lang-provider';
 
 export function PageShell({ children }: { children: React.ReactNode }) {
@@ -18,9 +17,6 @@ export function PageShell({ children }: { children: React.ReactNode }) {
         {children}
       </main>
       <Footer />
-      <p className="spine" aria-hidden="true">
-        {siteConfig.tagline[lang]}
-      </p>
     </div>
   );
 }

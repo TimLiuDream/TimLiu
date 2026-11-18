@@ -15,7 +15,7 @@ export async function GET() {
           height: '100%',
           display: 'flex',
           flexDirection: 'column',
-          backgroundColor: '#f4f0e7',
+          backgroundColor: '#09090b',
           padding: 44,
         }}
       >
@@ -25,10 +25,10 @@ export async function GET() {
             flexDirection: 'column',
             justifyContent: 'space-between',
             flex: 1,
-            padding: '46px 54px',
-            borderRadius: 24,
-            border: '2px solid #e0d5c6',
-            backgroundColor: '#fbf8f3',
+            padding: '48px 56px',
+            borderRadius: 28,
+            border: '1.5px solid #27272a',
+            backgroundColor: '#111114',
           }}
         >
           {/* Top header */}
@@ -45,15 +45,14 @@ export async function GET() {
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  width: 52,
-                  height: 52,
-                  border: '2.5px solid #8f3418',
-                  borderRadius: 6,
-                  color: '#8f3418',
-                  fontSize: 20,
+                  width: 54,
+                  height: 54,
+                  borderRadius: 14,
+                  border: '1.5px solid #27272a',
+                  backgroundColor: '#18181c',
+                  color: '#fafafa',
+                  fontSize: 21,
                   fontWeight: 700,
-                  letterSpacing: '0.06em',
-                  transform: 'rotate(-8deg)',
                 }}
               >
                 TL
@@ -64,7 +63,7 @@ export async function GET() {
                     display: 'flex',
                     fontSize: 32,
                     fontWeight: 700,
-                    color: '#1c1916',
+                    color: '#fafafa',
                     letterSpacing: '-0.02em',
                     lineHeight: 1.1,
                   }}
@@ -74,12 +73,12 @@ export async function GET() {
                 <div
                   style={{
                     display: 'flex',
-                    marginTop: 4,
+                    marginTop: 5,
                     fontSize: 18,
-                    color: '#5e574c',
+                    color: '#a1a1aa',
                   }}
                 >
-                  {siteConfig.tagline.zh}
+                  {siteConfig.tagline.en}
                 </div>
               </div>
             </div>
@@ -88,50 +87,50 @@ export async function GET() {
               style={{
                 display: 'flex',
                 alignItems: 'center',
-                padding: '8px 20px',
+                gap: 10,
+                padding: '9px 20px',
                 borderRadius: 999,
-                border: '1.5px solid #e0d5c6',
-                backgroundColor: '#efe8dc',
-                color: '#4f493f',
-                fontSize: 20,
+                border: '1.5px solid #27272a',
+                backgroundColor: '#18181c',
+                color: '#e4e4e7',
+                fontSize: 19,
               }}
             >
+              <div
+                style={{
+                  display: 'flex',
+                  width: 9,
+                  height: 9,
+                  borderRadius: 999,
+                  backgroundColor: '#10b981',
+                }}
+              />
               {hostname}
             </div>
           </div>
 
           {/* Center positioning */}
           <div style={{ display: 'flex', flexDirection: 'column' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-              <div
-                style={{
-                  display: 'flex',
-                  width: 11,
-                  height: 11,
-                  backgroundColor: '#8f3418',
-                }}
-              />
-              <div
-                style={{
-                  display: 'flex',
-                  fontSize: 18,
-                  color: '#4f493f',
-                  letterSpacing: '0.08em',
-                }}
-              >
-                {`${t('zh', 'hero.badge')} · ${t('en', 'hero.badge').toUpperCase()}`}
-              </div>
+            <div
+              style={{
+                display: 'flex',
+                fontSize: 20,
+                color: '#10b981',
+                letterSpacing: '0.06em',
+              }}
+            >
+              INDIE BUILDER · AI AGENTS & WEB3
             </div>
 
             <div
               style={{
                 display: 'flex',
-                marginTop: 18,
+                marginTop: 14,
                 fontSize: 46,
                 fontWeight: 700,
-                color: '#1c1916',
-                letterSpacing: '-0.02em',
-                lineHeight: 1.28,
+                color: '#fafafa',
+                letterSpacing: '-0.025em',
+                lineHeight: 1.25,
               }}
             >
               {t('zh', 'hero.positioning')}
@@ -141,16 +140,16 @@ export async function GET() {
               style={{
                 display: 'flex',
                 alignItems: 'center',
-                marginTop: 28,
-                padding: '14px 20px',
+                marginTop: 26,
+                padding: '14px 22px',
                 borderRadius: 14,
-                border: '1.5px solid #e0d5c6',
-                backgroundColor: '#f4f0e7',
+                border: '1.5px solid #27272a',
+                backgroundColor: '#09090b',
                 fontSize: 21,
               }}
             >
-              <span style={{ color: '#8f3418', marginRight: 10 }}>&gt;</span>
-              <span style={{ color: '#4f493f' }}>
+              <span style={{ color: '#10b981', marginRight: 12 }}>$</span>
+              <span style={{ color: '#a1a1aa' }}>
                 {`${t('en', 'hero.focusValue')} ${t('en', 'hero.modeValue')}`}
               </span>
             </div>
@@ -163,7 +162,7 @@ export async function GET() {
               alignItems: 'center',
               justifyContent: 'space-between',
               paddingTop: 22,
-              borderTop: '1.5px solid #e0d5c6',
+              borderTop: '1.5px solid #27272a',
             }}
           >
             <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
@@ -174,8 +173,9 @@ export async function GET() {
                     display: 'flex',
                     padding: '6px 16px',
                     borderRadius: 999,
-                    border: '1.5px solid #e0d5c6',
-                    color: '#4f493f',
+                    border: '1.5px solid #27272a',
+                    backgroundColor: '#18181c',
+                    color: '#d4d4d8',
                     fontSize: 18,
                   }}
                 >
@@ -188,10 +188,10 @@ export async function GET() {
               style={{
                 display: 'flex',
                 fontSize: 20,
-                color: '#5e574c',
+                color: '#a1a1aa',
               }}
             >
-              {`${projectCount} Projects · /tools · /web3 · /now`}
+              {`${projectCount} Live Apps · /tools · /web3 · /now`}
             </div>
           </div>
         </div>
