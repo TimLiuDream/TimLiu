@@ -1,12 +1,12 @@
 # TimLiu Personal Homepage
 
-极简极客风个人主页，基于 Next.js + Tailwind CSS 构建。
+极简编辑部极客风个人主页（纸墨朱砂视觉），基于 Next.js + Tailwind CSS 构建。
 
 ## Preview
 
-- GitHub-style minimal UI
-- Light / Dark theme toggle（localStorage 持久化，含防闪烁内联脚本）
-- 中英双语切换（zh / en，基于 Context 的轻量 i18n）
+- Editorial Ink & Cinnabar UI（宣纸墨砂风排版与细节动效）
+- Light / Dark theme toggle（localStorage 持久化，含防闪烁内联脚本与 View Transition）
+- 中英双语切换（zh / en，基于 `useSyncExternalStore` 的轻量 i18n）
 - `/now` 页面记录最近在做什么
 - `/tools` AI 工具推荐，`/web3` 早期项目追踪，内容都来自 `data/`
 - RSS feed（`/feed.xml`）、sitemap、robots、动态 OG 图
@@ -32,16 +32,17 @@ app/
   tools/page.tsx      # /tools
   web3/page.tsx       # /web3
   now/page.tsx        # /now 页面
-  feed.xml/route.ts   # RSS feed
-  og-image/route.tsx  # 动态生成 OG 图（edge runtime，next/og）
+  feed.xml/route.ts   # RSS feed（构建时由 data/ 与 siteConfig 自动生成）
+  og-image/route.tsx  # 动态生成 OG 图（next/og）
   robots.ts
   sitemap.ts
   error.tsx
   loading.tsx
   not-found.tsx
-  icon.svg
+  icon.svg            # 站点朱砂印章图标（TL）
 components/
   hero.tsx
+  animated-3d-character.tsx
   about-section.tsx
   projects-section.tsx
   contact-section.tsx
@@ -52,20 +53,20 @@ components/
   lang-toggle.tsx
   theme-toggle.tsx
   icons.tsx
-  site-mark.tsx
 data/
   projects.ts         # 项目：问题、可选指标、可选截图、链接
   tools.ts            # AI 工具
   web3.ts             # Web3 早期项目
 lib/
   site-config.ts      # 个人信息、联系方式、标签、可选的 X 关注数
+  site-url.ts         # 主域名解析与旧生产域名 308 跳转逻辑
+  site-metadata.ts    # 全站 Metadata 定义
+  structured-data.ts  # Schema.org JSON-LD 图谱
+  agent-content.ts    # /llms.txt 与 /llms-full.txt 文本聚合
   github-stars.ts     # GitHub star 总数，失败则首页不显示
   i18n.ts             # zh/en 文案 + t() 取词函数
 public/
-  avatar.jpg          # 头像（首页引用）
-  favicon.svg
-  avatar.svg          # 未引用（遗留）
-  og-image.svg        # 未引用（OG 图已改用动态路由）
+  avatar-character.png # 首页卡通头像（支持点击切换彩蛋）
 doc/
   personal-homepage-prd.md
   design-spec-github-geek.md
@@ -99,8 +100,8 @@ npm run dev
 
 - Theme preference is stored in `localStorage`；dark mode 通过切换 `<html>` 的 `dark` 类实现。
 - Language preference 同样存 `localStorage`，默认 `zh`。
-- OpenGraph metadata uses dynamically generated `/og-image`（PNG, 1200×630, edge runtime）。
-- 头像使用 `public/avatar.jpg`。
+- OpenGraph metadata uses dynamically generated `/og-image`（PNG, 1200×630, `next/og`）。
+- 头像使用 `public/avatar-character.png`，站点图标使用 `app/icon.svg`。
 - The site is intentionally small and easy to extend later.
 
 ## Projects

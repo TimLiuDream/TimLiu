@@ -6,9 +6,6 @@ export const siteMetadata: Metadata = {
   title: { default: siteConfig.title, template: '%s | TimLiu' },
   description: siteConfig.summary.zh,
   robots: { index: true, follow: true },
-  icons: {
-    icon: '/favicon.svg',
-  },
   openGraph: {
     type: 'website',
     siteName: siteConfig.name,

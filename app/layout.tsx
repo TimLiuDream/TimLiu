@@ -47,7 +47,7 @@ export default function RootLayout({
       <body className={`${sans.variable} ${display.variable} ${mono.variable}`}>
         <script
           dangerouslySetInnerHTML={{
-            __html: '(function(){try{var t=localStorage.getItem("theme");var d=document.documentElement;if(t==="dark"||(!t&&window.matchMedia("(prefers-color-scheme: dark)").matches)){d.classList.add("dark");d.style.colorScheme="dark"}else{d.style.colorScheme="light"}}catch(e){}})()',
+            __html: '(function(){try{var d=document.documentElement;var t=localStorage.getItem("theme");if(t==="dark"||(!t&&window.matchMedia("(prefers-color-scheme: dark)").matches)){d.classList.add("dark");d.style.colorScheme="dark"}else{d.style.colorScheme="light"}var l=localStorage.getItem("lang");d.lang=l==="en"?"en":"zh-CN"}catch(e){}})()',
           }}
         />
         <div className="atmosphere" aria-hidden="true" />

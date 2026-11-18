@@ -8,15 +8,6 @@ type Theme = 'light' | 'dark';
 
 const listeners = new Set<() => void>();
 
-function subscribe(listener: () => void) {
-  listeners.add(listener);
-  return () => listeners.delete(listener);
-}
-
-function emit() {
-  listeners.forEach((listener) => listener());
-}
-
 function readTheme(): Theme {
   try {
     const stored = window.localStorage.getItem('theme');
@@ -31,6 +22,39 @@ function applyTheme(theme: Theme) {
   const root = document.documentElement;
   root.classList.toggle('dark', theme === 'dark');
   root.style.colorScheme = theme;
+}
+
+function subscribe(listener: () => void) {
+  listeners.add(listener);
+  const onStorage = (event: StorageEvent) => {
+    if (event.key === 'theme' || event.key === null) {
+      applyTheme(readTheme());
+      listener();
+    }
+  };
+  const media = window.matchMedia('(prefers-color-scheme: dark)');
+  const onMediaChange = () => {
+    try {
+      const stored = window.localStorage.getItem('theme');
+      if (stored !== 'dark' && stored !== 'light') {
+        applyTheme(readTheme());
+        listener();
+      }
+    } catch {
+      // Ignore storage errors in restricted environments.
+    }
+  };
+  window.addEventListener('storage', onStorage);
+  media.addEventListener('change', onMediaChange);
+  return () => {
+    listeners.delete(listener);
+    window.removeEventListener('storage', onStorage);
+    media.removeEventListener('change', onMediaChange);
+  };
+}
+
+function emit() {
+  listeners.forEach((listener) => listener());
 }
 
 function subscribeMounted() {

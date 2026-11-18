@@ -96,6 +96,7 @@ export const translations = {
     },
     error: {
       title: '出了点问题',
+      description: '页面加载时遇到了意外情况，请稍后重试。',
       retry: '重试',
     },
     loading: {
@@ -195,6 +196,7 @@ export const translations = {
     },
     error: {
       title: 'Something went wrong',
+      description: 'An unexpected error occurred while loading this page. Please try again.',
       retry: 'Retry',
     },
     loading: {

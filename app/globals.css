@@ -452,22 +452,6 @@ a {
   transform: scale(1.035);
 }
 
-.portrait-chip {
-  position: absolute;
-  z-index: 2;
-  left: 0.8rem;
-  bottom: 0.8rem;
-  border-radius: 999px;
-  background: rgb(18 16 14 / 0.78);
-  color: #f7f3ec;
-  font-family: var(--font-mono, ui-monospace), ui-monospace, monospace;
-  font-size: 0.68rem;
-  letter-spacing: 0.14em;
-  line-height: 1;
-  padding: 0.38rem 0.5rem;
-  pointer-events: none;
-}
-
 .console {
   margin-top: 0.85rem;
   border: 1px solid var(--border);

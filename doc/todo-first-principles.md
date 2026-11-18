@@ -45,9 +45,8 @@
 
 ## C 级 — 长远基石（可后续慢慢处理）
 
-- [x] ~~**引入 `next/font` 优化字体加载**~~ → **已回滚，改用系统字体栈**
-  - `next/font/google` 需要在构建时访问 Google Fonts API，本地开发环境受限。
-  - `globals.css` 已有 `font-family: Inter, system-ui, ...` 后备栈，效果一致且无外部依赖。
+- [x] **引入 `next/font` 优化字体加载**
+  - 使用 `next/font/google` 自托管加载 `Instrument Sans`、`Fraunces` 与 `IBM Plex Mono`，搭配中文系统字体回退栈。
 
 - [x] **添加 `loading.tsx` / `error.tsx` / `not-found.tsx`**
   - 匹配页面风格的极简加载、错误和 404 页面。

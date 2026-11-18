@@ -5,6 +5,7 @@ module.exports = {
     './app/**/*.{ts,tsx}',
     './components/**/*.{ts,tsx}',
     './lib/**/*.{ts,tsx}',
+    './data/**/*.{ts,tsx}',
   ],
   theme: {
     extend: {
@@ -12,9 +13,16 @@ module.exports = {
         border: 'var(--border)',
         background: 'var(--background)',
         foreground: 'var(--foreground)',
-        primary: 'var(--primary)',
+        primary: {
+          DEFAULT: 'var(--primary)',
+          hover: 'var(--primary-hover)',
+          foreground: 'var(--primary-foreground)',
+        },
         card: 'var(--card)',
-        muted: 'var(--chip)',
+        muted: 'var(--muted)',
+        faint: 'var(--faint)',
+        chip: 'var(--chip)',
+        link: 'var(--link)',
         accent: 'var(--chip)',
         'accent-foreground': 'var(--foreground)',
       },

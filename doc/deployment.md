@@ -30,8 +30,9 @@ npm run build
 > 如果后面你要加更复杂的边缘能力，再单独补适配。
 
 ## 站点资产
-- OG 图：`public/og-image.svg`
-- 头像：`public/avatar.svg`
+- OG 图：动态路由 `app/og-image/route.tsx`（`/og-image`）
+- 站点图标：`app/icon.svg`
+- 头像：`public/avatar-character.png`
 
 ## 部署前检查
 - `npm run build` 是否成功

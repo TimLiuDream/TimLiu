@@ -19,9 +19,23 @@ function readStoredLang(): Lang {
   }
 }
 
+function applyLang(lang: Lang) {
+  document.documentElement.lang = lang === 'en' ? 'en' : 'zh-CN';
+}
+
 function subscribe(listener: () => void) {
   listeners.add(listener);
-  return () => listeners.delete(listener);
+  const onStorage = (event: StorageEvent) => {
+    if (event.key === 'lang' || event.key === null) {
+      applyLang(readStoredLang());
+      listener();
+    }
+  };
+  window.addEventListener('storage', onStorage);
+  return () => {
+    listeners.delete(listener);
+    window.removeEventListener('storage', onStorage);
+  };
 }
 
 function emit() {
@@ -30,10 +44,6 @@ function emit() {
 
 function getServerLang(): Lang {
   return 'zh';
-}
-
-function applyLang(lang: Lang) {
-  document.documentElement.lang = lang === 'en' ? 'en' : 'zh-CN';
 }
 
 export function LangProvider({ children }: { children: React.ReactNode }) {
